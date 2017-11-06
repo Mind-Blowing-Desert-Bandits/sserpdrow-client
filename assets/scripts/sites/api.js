@@ -1,7 +1,7 @@
 'use strict'
 
 const config = require('../config.js')
-// const store = require('../store')
+const store = require('../store')
 
 const getSites = function () {
   return $.ajax({
@@ -16,7 +16,19 @@ const getSite = function (thisID) {
   })
 }
 
+const createSite = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sites',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   getSites,
-  getSite
+  getSite,
+  createSite
 }

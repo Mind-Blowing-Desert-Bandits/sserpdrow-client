@@ -7,7 +7,8 @@ const signUpSuccess = function (data) {
   $('#signedOut').hide()
   $('#signInMessage').text('')
   $('#signInModal').hide()
-  $('#signInAfterSignUp').show()
+  // $('#signInModal').modal('hide')
+  $('#createASite').show()
 }
 
 const signUpFailure = function () {
@@ -65,6 +66,26 @@ const signInFailure = function () {
   $('#signInMessage').text('Please try signing in with a registered email and password.')
 }
 
+const signInNewUserSuccess = function (data) {
+  $('#messageContent').text('')
+  $('#sign-up').hide()
+  $('#signInAfterSignUp').hide()
+  $('#sign-in').hide()
+  $('#signUpLink').hide()
+  $('#signOut').show()
+  $('#changePassword').show()
+  $('#signedOut').hide()
+  $('#signUpModal').hide()
+  $('#userNameNav').show()
+  $('#signInMessage').hide()
+  store.user = data.user
+  const user = store.user.email
+  $('#userNameNav').append(user)
+  $('#exampleModal').modal('hide')
+  $('#userSignedOut').hide()
+  $('#signedIn').show()
+}
+
 const signOutSuccess = function () {
   store.user = null
   $('#changePassword').hide()
@@ -79,7 +100,12 @@ const signOutSuccess = function () {
   $('#signInModal').show()
   $('#userNameNav').text('')
 }
-
+const getSitesSuccess = function (data) {
+  console.log('This is the returned index of data:', data.sites)
+  console.log(store.user)
+  const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
+  console.log(userSites)
+}
 const signOutFailure = function () {
   $('#signedOut').text('Please try again.')
 }
@@ -108,5 +134,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  getSitesSuccess,
+  signInNewUserSuccess
 }
