@@ -22,8 +22,20 @@ const onSignUp = function (event) {
   }
 }
 
+const onSignIn = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  $('#passwordChange').text('')
+  $('#signInEmail').val('')
+  $('#signInPassword').val('')
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
+
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
 }
 
 module.exports = {
