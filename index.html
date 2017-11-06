@@ -93,15 +93,15 @@
     </div>
 
     <div class="container">
-<div class="jumbotron">
+      <div class="jumbotron">
 
-      <h1 id="siteTitle">Example</h1>
+        <h1 id="siteTitle">Example</h1>
 
-     <p id="siteDescription"></p>
+        <p id="siteDescription"></p>
 
-      <button id="get-sites" type="submit" name="submit" value="All sites" class="btn btn-primary">View All Sites</button>
-    </div>
-    <section id="signedOut" style="display: none" class="message">You have been logged out.</section>
+        <button id="get-sites" type="submit" name="submit" value="All sites" class="btn btn-primary">View All Sites</button>
+      </div>
+      <section id="signedOut" style="display: none" class="message">You have been logged out.</section>
       <div id="sitePages" class="show-pages"></div>
       <h5 id="blogs" style="display: none">Blog Posts: </h5>
       <div id="allSites" class="showSites">
@@ -110,48 +110,64 @@
   </section>
 
 
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-          </div>
-          <div class="modal-body">
-            <form id="change-password">
-              <fieldset>
-                <legend>Change Password:</legend>
-                <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
-                <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
-                <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
-                <section id="passwordChange"></section>
-              </fieldset>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="passwordClose">Close</button>
-          </div>
+        </div>
+        <div class="modal-body">
+          <form id="change-password">
+            <fieldset>
+              <legend>Change Password:</legend>
+              <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
+              <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
+              <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
+              <section id="passwordChange"></section>
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="passwordClose">Close</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <section id="signedIn" style="display: none">
+  <section id="signedIn" style="display: none">
     <section id="createASite">
       <div class="container">
-        <form id="create-a-site">
-          <legend>What would you like to name your Site?</legend>
+        <form id="create-a-site" class="form-horizontal">
+          <legend>Create a blog site</legend>
           <div class="form-group">
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="site[title]" placeholder="Enter Your Site Name" autocomplete="no" required>
+            <label class="control-label col-sm-2" for="pwd">Site Name:</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" name="site[title]" placeholder="What should the name of your site be?" autocomplete="no" required>
             </div>
           </div>
-          <button type="submit" name="submit" value="Submit" id="createASiteTitleButton" class="btn btn-primary">Submit</button>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Site Description:</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" name="site[description]" placeholder="What is your Blog about?" autocomplete="no" required>
+            </div>
+          </div>
+          <div>
+            <button type="submit" name="submit" value="Submit" id="createASiteTitleButton" class="btn btn-primary col-sm-offset-4">Submit</button>
+          </div>
         </form>
       </div>
     </section>
+
+
+
+
+
+
   </section>
 
 </body>
+
 </html>
