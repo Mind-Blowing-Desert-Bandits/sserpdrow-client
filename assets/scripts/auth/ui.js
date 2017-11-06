@@ -65,6 +65,25 @@ const signInFailure = function () {
   $('#signInMessage').text('Please try signing in with a registered email and password.')
 }
 
+const signOutSuccess = function () {
+  store.user = null
+  $('#changePassword').hide()
+  $('#signOut').hide()
+  $('#signUpLink').show()
+  $('#signedOut').show()
+  $('#messageContent').text('')
+  $('#signInMessage').text('')
+  $('#messageContent').show()
+  $('#signInMessage').show()
+  $('#signUpModal').hide()
+  $('#signInModal').show()
+  $('#userNameNav').text('')
+}
+
+const signOutFailure = function () {
+  $('#signedOut').text('Please try again.')
+}
+
 const uiHandlers = function () {
   $('#signInModal').on('click', onSignInLinkClick)
   $('#signInAfterSignUp').on('click', onSignInLinkClick)
@@ -77,5 +96,7 @@ module.exports = {
   signUpFailure,
   signInSuccess,
   signInFailure,
-  onSignInLinkClick
+  onSignInLinkClick,
+  signOutSuccess,
+  signOutFailure
 }
