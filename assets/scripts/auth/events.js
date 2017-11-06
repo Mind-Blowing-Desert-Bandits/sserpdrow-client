@@ -16,9 +16,9 @@ const onSignUp = function (event) {
     $('#signUpPasswordConf').val('')
     api.signUp(data)
       .then(ui.signUpSuccess)
+      .catch(ui.signUpFailure)
       .then(() => api.signIn(dataSave))
       .then(ui.signInSuccess)
-      .catch(ui.signUpFailure)
   }
 }
 
