@@ -26,7 +26,20 @@ const viewSite = function (event) {
   const thisID = siteParent.getAttribute('data-id')
   api.getSite(thisID)
     .then(ui.viewSiteSuccess)
+    .then(function () {
+      $('.show-pages').on('click', viewPage)
+    })
     .catch(ui.viewSiteFailure)
+}
+
+const viewPage = function (event) {
+  event.preventDefault()
+  const page = event.target
+  const pageId = page.parentNode
+  const pageParent = pageId.parentNode
+  console.log(pageParent)
+  const thisID = pageParent.getAttribute('data-id')
+  console.log('id is ', thisID)
 }
 
 const siteHandlers = function () {
