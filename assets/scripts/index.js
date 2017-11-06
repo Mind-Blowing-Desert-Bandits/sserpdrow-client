@@ -7,13 +7,13 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-// const authEvents = require('./authEvents')
-// const ui = require('./ui')
+const authEvents = require('./auth/events')
+const ui = require('./auth/ui')
 
-// $(() => {
-//   // authEvents.authHandlers()
-//   // ui.uiHandlers()
-// })
+$(() => {
+  authEvents.authHandlers()
+  ui.uiHandlers()
+})
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
