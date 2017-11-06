@@ -18,9 +18,11 @@ const getSitesFailure = function () {
 const viewSiteSuccess = function (site) {
   store.site = site
   const showSite = showSiteTemplate({ blogs: site.site.blogposts })
-  console.log('this is pages ', site.site.pages)
+  console.log('this is a site title ', site.site)
   const showPages = showPagesTemplate({ pages: site.site.pages })
   $('#allSites').text('')
+  $('#siteTitle').text(site.site.title)
+  $('#blogs').show()
   $('#allSites').append(showSite)
   $('#sitePages').text('')
   $('#sitePages').append(showPages)
