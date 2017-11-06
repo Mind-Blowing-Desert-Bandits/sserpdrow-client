@@ -22,10 +22,10 @@
         <span class="icon-bar"></span>
       </button>
       <!-- <a class="navbar-brand" href="#">My Record Collector</a> -->
-      <p class="navbar-brand">My Record Collector</p>
+      <p class="navbar-brand">SSERPDROW</p>
     </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-right">
           <li id="signUpLink" data-toggle="modal" data-target="#exampleModal">
             <a href="#" id="signUpLink">Sign Up/Sign In</a>
           </li>
@@ -43,6 +43,36 @@
       </div>
     </div>
   </nav>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
+                  <a href="#signIn" id="signInModal" name="signInModal">Already a registered member? Sign in!</a>
+                  <a href="#signUp" id="signUpModal" style="display: none">Not yet a member? Sign up!</a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="sign-up">
+                    <fieldset>
+                      <legend>Sign up!</legend>
+                      <input type="email" name="credentials[email]" placeholder="Enter Email" required id=signUpEmail>
+                      <input type="password" name="credentials[password]" placeholder="Enter Password" required id=signUpPassword>
+                      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required id=signUpPasswordConf>
+                      <button type="submit" name="submit" value="Sign Up!"class="btn btn-primary">Submit</button>
+                      <br>
+                      <div class="containerSignIn">
+                        <section id="messageContent"></section>
+                        <a href="#signIn" id="signInAfterSignUp" name="signInAfterSignUp" style="display: none">Sign in to start collecting!</a>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
       <h1>Example</h1>
 
      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
