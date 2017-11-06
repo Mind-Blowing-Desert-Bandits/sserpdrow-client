@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>SSERPDROW</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>SSERPDROW</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
-      <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- <a class="navbar-brand" href="#">My Record Collector</a> -->
-      <p class="navbar-brand">SSERPDROW</p>
-    </div>
+        <!-- <a class="navbar-brand" href="#">My Record Collector</a> -->
+        <p class="navbar-brand">SSERPDROW</p>
+      </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li data-toggle="modal" data-target="#exampleModal">
@@ -43,76 +45,54 @@
       </div>
     </div>
   </nav>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
-                  <a href="#signIn" id="signInModal" name="signInModal">Already a registered member? Sign in!</a>
-                  <a href="#signUp" id="signUpModal" style="display: none">Not yet a member? Sign up!</a>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+  <section id="userSignedOut">
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
+            <a href="#signIn" id="signInModal" name="signInModal">Already a registered member? Sign in!</a>
+            <a href="#signUp" id="signUpModal" style="display: none">Not yet a member? Sign up!</a>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                </div>
-                <div class="modal-body">
-                  <form id="sign-up">
-                    <fieldset>
-                      <legend>Sign up!</legend>
-                      <input type="email" name="credentials[email]" placeholder="Enter Email" required id=signUpEmail>
-                      <input type="password" name="credentials[password]" placeholder="Enter Password" required id=signUpPassword>
-                      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required id=signUpPasswordConf>
-                      <button type="submit" name="submit" value="Sign Up!"class="btn btn-primary">Submit</button>
-                      <br>
-                      <div class="containerSignIn">
-                        <section id="messageContent"></section>
-                        <a href="#signIn" id="signInAfterSignUp" name="signInAfterSignUp" style="display: none">Sign in to start collecting!</a>
-                      </div>
-                    </fieldset>
-                  </form>
-                  <form id="sign-in" style="display: none">
-                    <fieldset>
-                      <legend>Sign in!</legend>
-                      <input type="email" name="credentials[email]" placeholder="Enter Email" required id=signInEmail>
-                      <input type="password" name="credentials[password]" placeholder="Enter Password" required id=signInPassword>
-                      <button type="submit" name="submit" value="Sign In!"class="btn btn-primary">Submit</button>
-                      <br>
-                    </fieldset>
-                  </form>
-                  <section id="signInMessage"></section>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="signClose">Close</button>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="change-password">
-          <fieldset>
-            <legend>Change Password:</legend>
-            <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
-            <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
-            <button type="submit" name="submit" value="Change Password!"class="btn btn-primary">Submit</button>
-            <section id="passwordChange"></section>
-          </fieldset>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="passwordClose">Close</button>
+          <div class="modal-body">
+            <form id="sign-up">
+              <fieldset>
+                <legend>Sign up!</legend>
+                <input type="email" name="credentials[email]" placeholder="Enter Email" required id="signUpEmail">
+                <input type="password" name="credentials[password]" placeholder="Enter Password" required id="signUpPassword">
+                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required id="signUpPasswordConf">
+                <button type="submit" name="submit" value="Sign Up!" class="btn btn-primary">Submit</button>
+                <br>
+                <div class="containerSignIn">
+                  <section id="messageContent"></section>
+                  <a href="#signIn" id="signInAfterSignUp" name="signInAfterSignUp" style="display: none">Sign in to start collecting!</a>
+                </div>
+              </fieldset>
+            </form>
+            <form id="sign-in" style="display: none">
+              <fieldset>
+                <legend>Sign in!</legend>
+                <input type="email" name="credentials[email]" placeholder="Enter Email" required id="signInEmail">
+                <input type="password" name="credentials[password]" placeholder="Enter Password" required id="signInPassword">
+                <button type="submit" name="submit" value="Sign In!" class="btn btn-primary">Submit</button>
+                <br>
+              </fieldset>
+            </form>
+            <section id="signInMessage"></section>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="signClose">Close</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="container">
+
+    <div class="container">
 <div class="jumbotron">
 
       <h1 id='siteTitle'>Example</h1>
@@ -126,6 +106,56 @@
       <h5 id='blogs' style='display: none'>Blog Posts: </h5>
       <div id='allSites' class='showSites'>
       </div>
-  </div>
-    </body>
+    </div>
+  </section>
+
+  <section id="signedIn" style="display: none">
+
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          </div>
+          <div class="modal-body">
+            <form id="change-password">
+              <fieldset>
+                <legend>Change Password:</legend>
+                <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
+                <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
+                <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
+                <section id="passwordChange"></section>
+              </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="passwordClose">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <section id="createASite">
+      <div class="container">
+        <form id="create-a-site">
+          <legend>What would you like to name your Site?</legend>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="site[title]" placeholder="Enter Your Site Name" autocomplete="no" required>
+            </div>
+          </div>
+          <button type="submit" name="submit" value="Submit" id="createASiteTitleButton" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </section>
+  </section>
+
+
+</body>
+
 </html>

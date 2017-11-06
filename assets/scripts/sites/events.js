@@ -1,6 +1,6 @@
 'use strict'
 
-// const getFormFields = require('../../../lib/get-form-fields')
+const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 // const store = require('../store')
@@ -31,7 +31,13 @@ const viewSite = function (event) {
     })
     .catch(ui.viewSiteFailure)
 }
-
+const createSite = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.createSite(data)
+    .then(ui.createSiteSuccess)
+    .catch(ui.createSiteFailure)
+}
 const viewPage = function (event) {
   event.preventDefault()
   const page = event.target
@@ -40,10 +46,12 @@ const viewPage = function (event) {
   console.log(pageParent)
   const thisID = pageParent.getAttribute('data-id')
   console.log('id is ', thisID)
+
 }
 
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
+  $('#create-a-site').on('submit', createSite)
 }
 
 module.exports = {

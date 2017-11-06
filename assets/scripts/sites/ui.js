@@ -32,9 +32,20 @@ const viewSiteFailure = function () {
   $('#allSites').text('Please try again')
 }
 
+const createSiteSuccess = function (site) {
+  store.site = site
+  console.log(store.site)
+}
+
+const createSiteFailure = function () {
+  console.log('failure')
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
   viewSiteSuccess,
-  viewSiteFailure
+  viewSiteFailure,
+  createSiteSuccess,
+  createSiteFailure
 }

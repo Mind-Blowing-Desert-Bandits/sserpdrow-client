@@ -4,6 +4,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
+const apiSites = require('../sites/api')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -19,7 +20,8 @@ const onSignUp = function (event) {
       .then(ui.signUpSuccess)
       .catch(ui.signUpFailure)
       .then(() => api.signIn(dataSave))
-      .then(ui.signInSuccess)
+      .then(ui.signInNewUserSuccess)
+      .catch(ui.signInFailure)
   }
 }
 
