@@ -9,10 +9,14 @@ $(() => {
 
 const authEvents = require('./auth/events')
 const ui = require('./auth/ui')
+const siteEvents = require('./sites/events')
+// const siteUi = require('./sites/ui')
 
 $(() => {
   authEvents.authHandlers()
+  siteEvents.siteHandlers()
   ui.uiHandlers()
+  // siteUi.uiHandlers()
 })
 
 // use require with a reference to bundle the file and use it in this file
