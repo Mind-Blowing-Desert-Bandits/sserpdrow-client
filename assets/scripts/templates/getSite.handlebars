@@ -1,0 +1,31 @@
+{{#each blogs as |blog|}}
+
+ <!-- Developers, why are we using data-id and not just id? -->
+<div class="col-xs-8 col-md-8 minibox">
+  <ul data-id="{{blog.id}}">
+    <li>
+    {{#if blog.title}}
+    <small><b>Title:</b> {{blog.title}}</small>
+    {{else}}
+    <b>No Title</b>
+    {{/if}}</li>
+
+    <li>
+    {{#if blog.textcontent}}
+    <small><b>Content:</b> {{blog.textcontent}}</small>
+    {{else}}
+    <b>No Content</b>
+    {{/if}}</li>
+
+    <li>
+    {{#if blog.date}}
+    <small><b>Published Date:</b> {{blog.date}}</small>
+    {{else}}
+    <b>No Publish Date</b>
+    {{/if}}</li>
+
+    <br>
+  </ul>
+
+</div>
+{{/each}}
