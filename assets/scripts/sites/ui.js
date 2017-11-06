@@ -1,10 +1,12 @@
 'use strict'
 
 const store = require('../store.js')
+const showSitesTemplate = require('../templates/getSites.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
-  console.log('store.sites is ', store.sites)
+  const showSites = showSitesTemplate({ sites: sites.sites })
+  $('#allSites').append(showSites)
 }
 
 const getSitesFailure = function () {
