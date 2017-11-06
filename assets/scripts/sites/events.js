@@ -8,6 +8,7 @@ const ui = require('./ui')
 const onGetSites = function (event) {
   event.preventDefault()
   $('#allSites').text('')
+  $('#sitePages').text('')
   api.getSites()
     .then(ui.getSitesSuccess)
     .then(function () {

@@ -34,6 +34,16 @@ const onSignIn = function (event) {
     .catch(ui.signInFailure)
 }
 
+const onSignUpLinkClick = function (event) {
+  event.preventDefault()
+  $('#sign-up').show()
+  $('#sign-in').hide()
+  $('#signInModal').show()
+  $('#signUpModal').hide()
+  $('#messageContent').text('')
+  $('#signInMessage').text('')
+}
+
 const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
@@ -72,6 +82,7 @@ const authHandlers = function () {
   $('#signOut').on('click', onSignOut)
   $('#change-password').on('submit', onChangePassword)
   $('#passwordClose').on('click', clearPassword)
+  $('#signUpLink').on('click', onSignUpLinkClick)
 }
 
 module.exports = {
