@@ -84,6 +84,14 @@ const signOutFailure = function () {
   $('#signedOut').text('Please try again.')
 }
 
+const changePasswordSuccess = function () {
+  $('#passwordChange').text('Password has been successfully updated.')
+}
+
+const changePasswordFailure = function () {
+  $('#passwordChange').text('Please try again.')
+}
+
 const uiHandlers = function () {
   $('#signInModal').on('click', onSignInLinkClick)
   $('#signInAfterSignUp').on('click', onSignInLinkClick)
@@ -98,5 +106,7 @@ module.exports = {
   signInFailure,
   onSignInLinkClick,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }
