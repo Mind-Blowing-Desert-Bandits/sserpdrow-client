@@ -10,6 +10,13 @@ const getSites = function () {
   })
 }
 
+const getSite = function (thisID) {
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + thisID
+  })
+}
+
 module.exports = {
-  getSites
+  getSites,
+  getSite
 }

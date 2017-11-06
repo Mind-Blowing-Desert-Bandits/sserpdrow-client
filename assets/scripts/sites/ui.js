@@ -10,10 +10,21 @@ const getSitesSuccess = function (sites) {
 }
 
 const getSitesFailure = function () {
-  console.log('this has failed')
+  $('#allSites').text('Please try again')
+}
+
+const viewSiteSuccess = function (site) {
+  store.site = site
+  console.log('selected site is ', store.site)
+}
+
+const viewSiteFailure = function () {
+  $('#allSites').text('Please try again')
 }
 
 module.exports = {
   getSitesSuccess,
-  getSitesFailure
+  getSitesFailure,
+  viewSiteSuccess,
+  viewSiteFailure
 }

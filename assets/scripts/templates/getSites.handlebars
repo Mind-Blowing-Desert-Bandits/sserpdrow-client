@@ -2,7 +2,16 @@
 
  <!-- Developers, why are we using data-id and not just id? -->
 <div class="col-xs-8 col-md-8 minibox">
-  <h1 data-id="{{site.id}}"> <small>Title: {{site.title}}</small></h1>
+  <ul data-id="{{site.id}}">
+    <li>
+    {{#if site.title}}
+    <small>Title: {{site.title}}</small>
+    {{else}}
+    <b>No Title</b>
+    {{/if}}</li>
+    <li><button class="view">View Site</button></li>
+    <br>
+  </ul>
 
 </div>
 {{/each}}
