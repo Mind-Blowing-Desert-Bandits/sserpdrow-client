@@ -1,6 +1,15 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+
 body {
   padding-top: 70px;
+}
+
+.show-pages {
+  display: inline-block;
+}
+
+.pages {
+  float: left;
 }

@@ -2,6 +2,8 @@
 
 const store = require('../store.js')
 const showSitesTemplate = require('../templates/getSites.handlebars')
+const showSiteTemplate = require('../templates/getSite.handlebars')
+const showPagesTemplate = require('../templates/showPage.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
@@ -15,7 +17,15 @@ const getSitesFailure = function () {
 
 const viewSiteSuccess = function (site) {
   store.site = site
-  console.log('selected site is ', store.site)
+  const showSite = showSiteTemplate({ blogs: site.site.blogposts })
+  console.log('this is a site title ', site.site.pages)
+  const showPages = showPagesTemplate({ pages: site.site.pages })
+  $('#allSites').text('')
+  $('#siteTitle').text(site.site.title)
+  $('#blogs').show()
+  $('#allSites').append(showSite)
+  $('#sitePages').text('')
+  $('#sitePages').append(showPages)
 }
 
 const viewSiteFailure = function () {
