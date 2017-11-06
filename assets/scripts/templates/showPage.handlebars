@@ -1,11 +1,11 @@
 {{#each pages as |page|}}
 
  <!-- Developers, why are we using data-id and not just id? -->
-<div class="col-xs-8 col-md-8 minibox">
+<div class="pages">
   <p data-id="{{page.id}}">
     <a href="#">
     {{#if page.type}}
-    <small>{{page.type}}</small>
+    <small>{{page.type}} /</small>
     {{else}}
     <b>No Page</b>
     {{/if}}</a>
