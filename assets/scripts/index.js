@@ -7,6 +7,14 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
+const authEvents = require('./authEvents')
+const ui = require('./ui')
+
+$(() => {
+  authEvents.authHandlers()
+  ui.uiHandlers()
+})
+
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
