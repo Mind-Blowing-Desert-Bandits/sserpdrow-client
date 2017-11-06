@@ -3,7 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-// const store = require('../store')
+const store = require('../store')
 
 const onGetSites = function (event) {
   event.preventDefault()
@@ -31,6 +31,7 @@ const viewSite = function (event) {
     })
     .catch(ui.viewSiteFailure)
 }
+
 const createSite = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -38,15 +39,19 @@ const createSite = function (event) {
     .then(ui.createSiteSuccess)
     .catch(ui.createSiteFailure)
 }
+
 const viewPage = function (event) {
   event.preventDefault()
   const page = event.target
   const pageId = page.parentNode
   const pageParent = pageId.parentNode
-  console.log(pageParent)
   const thisID = pageParent.getAttribute('data-id')
-  console.log('id is ', thisID)
-
+  for (let i = 0; i < store.site.site.pages.length; i++) {
+    if (store.site.site.pages[i].id === thisID) {
+      store.page = store.site.site.pages[i]
+    }
+  }
+  ui.showPageSuccess()
 }
 
 const siteHandlers = function () {
