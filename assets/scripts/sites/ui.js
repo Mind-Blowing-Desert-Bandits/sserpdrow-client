@@ -63,6 +63,14 @@ const showPageSuccess = function () {
   $('#allSites').append(showPage)
 }
 
+const showMyPageSuccess = function () {
+  $('#blogs').hide()
+  const page = store.myPage
+  const showPage = showPageSuccessTemplate({ page: page })
+  $('#myBlogs').text('')
+  $('#myBlogs').append(showPage)
+}
+
 const showPageFailure = function () {
   console.log('it failed')
 }
@@ -96,9 +104,10 @@ const showMySiteSuccess = function (data) {
   $('#newBlog').hide()
   $('#newPage').hide()
   $('#createASite').hide()
-  $('#mySite').text('')
+  $('#mySiteHeader').text('')
   $('#mySite').show()
-  $('#mySite').append(mySite)
+  $('#mySiteHeader').append(mySite)
+  $('#mySiteHeader').show()
   $('#myPages').text('')
   $('#myPages').append(myPages)
   $('#myBlogs').text('')
@@ -117,5 +126,6 @@ module.exports = {
   getUpdatedSiteSuccess,
   getUpdatedSiteFailure,
   addBlogPostSuccess,
-  showMySiteSuccess
+  showMySiteSuccess,
+  showMyPageSuccess
 }

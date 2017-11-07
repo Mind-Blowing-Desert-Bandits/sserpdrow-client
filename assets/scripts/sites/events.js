@@ -82,7 +82,25 @@ const showMySite = function (event) {
   event.preventDefault()
   api.getMySite()
     .then(ui.showMySiteSuccess)
+    .then(function () {
+      $('#myPages').on('click', viewMyPage)
+    })
     .catch(ui.showMySiteFailure)
+}
+
+const viewMyPage = function (event) {
+  event.preventDefault()
+  const page = event.target
+  const pageId = page.parentNode
+  const pageParent = pageId.parentNode
+  const thisID = pageParent.getAttribute('data-id')
+  console.log('page id is ', thisID)
+  for (let i = 0; i < store.mySite.site.pages.length; i++) {
+    if (store.mySite.site.pages[i].id === thisID) {
+      store.myPage = store.mySite.site.pages[i]
+    }
+  }
+  ui.showMyPageSuccess()
 }
 
 const siteHandlers = function () {
