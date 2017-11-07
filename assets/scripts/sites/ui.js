@@ -6,6 +6,7 @@ const showSiteTemplate = require('../templates/getSite.handlebars')
 const showPagesTemplate = require('../templates/showPage.handlebars')
 const showPageSuccessTemplate = require('../templates/showPageSuccess.handlebars')
 const showMySiteTemplate = require('../templates/mySite.handlebars')
+const showBlogsTemplate = require('../templates/manageBlogs.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
@@ -17,7 +18,7 @@ const getSitesSuccess = function (sites) {
 
 const getUpdatedSiteSuccess = function (data) {
   const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
-  store.site = userSites
+  store.site = userSites[0]
   console.log('store.site is', store.site)
   if (userSites.length !== 0) {
     // Show the dashboard
@@ -118,6 +119,13 @@ const showMySiteSuccess = function (data) {
   $('#myBlogs').append(myBlogs)
 }
 
+const manageBlog = function () {
+  const showBlogs = showBlogsTemplate({ blogs: store.site.blogposts })
+  $('#mBlog').html(showBlogs)
+  console.log(store.site)
+  console.log(store.site.blogposts)
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -131,5 +139,6 @@ module.exports = {
   getUpdatedSiteFailure,
   addBlogPostSuccess,
   showMySiteSuccess,
-  showMyPageSuccess
+  showMyPageSuccess,
+  manageBlog
 }

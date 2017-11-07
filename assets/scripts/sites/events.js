@@ -103,12 +103,22 @@ const viewMyPage = function (event) {
   ui.showMyPageSuccess()
 }
 
+const manageBlog = function () {
+  console.log('mange blog worked')
+  // Hide dashboard
+  $('#userDashboard').hide()
+  ui.manageBlog()
+  $('#manageBlogSection').show()
+  // Take information from site and use handlebars to create page that displays the blogs similar to when logged out with crud buttons
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
   $('#newBlogForm').on('submit', newBlogPost)
   $('#newPageForm').on('submit', newPage)
   $('#showSite').on('click', showMySite)
+  $('#manageBlog').on('click', manageBlog)
 }
 
 module.exports = {
