@@ -22,9 +22,8 @@ const viewSite = function (event) {
   event.preventDefault()
   const site = event.target
   const siteId = site.parentNode
-  const siteParent = siteId.parentNode
-  const thisID = siteParent.getAttribute('data-id')
-  api.getSite(thisID)
+  const thisSiteID = siteId.getAttribute('data-id')
+  api.getSite(thisSiteID)
     .then(ui.viewSiteSuccess)
     .then(function () {
       $('.show-pages').on('click', viewPage)
