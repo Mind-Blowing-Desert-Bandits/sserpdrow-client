@@ -3,7 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-// const store = require('../store')
+const store = require('../store.js')
 
 const onGetSites = function (event) {
   event.preventDefault()
@@ -52,9 +52,11 @@ const newBlogPost = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data)
-  // api.addBlogPost(data)
-  //   .then(ui.addBlogPostSuccess)
-  //   .catch(ui.addBlogPostSuccess)
+  console.log(store.site)
+  api.addBlogPost(data)
+    .then(ui.addBlogPostSuccess)
+    .catch(console.error)
+    .then(console.log)
 }
 
 const getUpdatedSiteByUser = function () {

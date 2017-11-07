@@ -18,7 +18,6 @@ const getUpdatedSiteSuccess = function (data) {
     $('#userSignedOut').hide()
     $('#signedIn').show()
     $('#userDashboard').show()
-    $('#newBlog').show()
   } else {
     // Have them create a site
     $('#userSignedOut').hide()
@@ -62,6 +61,11 @@ const createSiteFailure = function () {
   console.log('failure')
 }
 
+const addBlogPostSuccess = function () {
+  console.log('ui success')
+  document.getElementById('newBlogForm').reset()
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -70,5 +74,6 @@ module.exports = {
   createSiteSuccess,
   createSiteFailure,
   getUpdatedSiteSuccess,
-  getUpdatedSiteFailure
+  getUpdatedSiteFailure,
+  addBlogPostSuccess
 }
