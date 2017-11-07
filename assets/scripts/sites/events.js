@@ -65,7 +65,7 @@ const newBlogPost = function (event) {
     .then(console.log)
 }
 
-const newPage = function(event) {
+const newPage = function (event) {
   event.preventDefault()
   console.log(this)
   const data = getFormFields(this)

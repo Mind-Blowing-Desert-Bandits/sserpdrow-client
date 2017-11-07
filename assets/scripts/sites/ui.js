@@ -9,6 +9,8 @@ const getSitesSuccess = function (sites) {
   store.sites = sites
   const showSites = showSitesTemplate({ sites: sites.sites })
   $('#allSites').append(showSites)
+  $('#siteTitle').text('SSERPDROW')
+  $('#siteDescription').text('Welcome to SSERPDROW! To view our communities sites please click the button below. To create your own site/blogs please sign-up or sign-in!')
 }
 
 const getUpdatedSiteSuccess = function (data) {
@@ -39,6 +41,8 @@ const viewSiteSuccess = function (site) {
   const showPages = showPagesTemplate({ pages: site.site.pages })
   $('#allSites').text('')
   $('#siteTitle').text(site.site.title)
+  $('#siteDescription').text('')
+  $('#siteDescription').text(site.site.description)
   $('#blogs').show()
   $('#allSites').append(showSite)
   $('#sitePages').text('')
