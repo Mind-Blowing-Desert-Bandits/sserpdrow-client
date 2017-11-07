@@ -1,0 +1,28 @@
+{{#each blogs as |blog|}}
+  <br>
+  <div class="panel panel-info" data-id="{{blog.id}}">
+    {{#if blog.title}}
+      <div class="panel-heading">{{blog.title}} - {{blog.date}}</div>
+    {{else}}
+      <div class="panel-heading">No Title - {{blog.date}}</div>
+    {{/if}}
+    <div class="panel-body">
+      {{blog.textcontent}}
+      <br>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class=“btn-group” role=“group” aria-label=“...“>
+            <button type=“button” class="btn btn-primary editBlog">Edit</button>
+            <button type=“button” class="btn btn-danger deleteBlog">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- new Date.toISOString().split(‘T’)[0] -->
+{{/each}}

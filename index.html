@@ -51,6 +51,31 @@
     </div>
   </nav>
 
+  <section id="deleteModalSection">
+        <div class="modal fade"
+        id="deleteModal"
+        role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Are you sure you want to delete this post?</h3>
+          </div>
+          <div class="modal-footer">
+          <form id="yesDeleteForm">
+            <div class="btn-group">
+                <input id="deleteBlogId" type="hidden" name="blogposts[id]">
+                <button type="submit" class="btn btn-danger btn-lg yesDelete">Yes</button>
+                <button type="button" class="btn btn-primary btn-lg noDelete">No</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
   <section id="userSignedOut">
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -173,41 +198,32 @@
             <img class="img-circle" src="https://images.unsplash.com/photo-1481667172655-97ac4e21c7c5?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="blog image" width="140" height="140">
             <h3>Show Your Site</h3>
             <p>See how your site is being displayed to the world</p>
+                <button type="button" value="showSite" id="showSite" class="btn btn-primary">Submit</button>
           </div>
           <div class="col-lg-3">
             <img class="img-circle" src="https://images.unsplash.com/photo-1441109296207-fd911f7cd5e5?auto=format&fit=crop&w=1971&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="blog image" width="140" height="140">
             <h3>Manage Blog Posts</h3>
             <p>Create, Edit, Update, and Delete Blog Posts</p>
+              <button type="button" value="manageBlog" id="manageBlog" class="btn btn-primary">Submit</button>
           </div>
           <div class="col-lg-3">
             <img class="img-circle" src="https://images.unsplash.com/photo-1455651264681-40d634a35ce4?auto=format&fit=crop&w=1867&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="pages image" width="140" height="140">
             <h3>Manage Pages</h3>
             <p>Create, Edit, Update, and Delete Your Pages</p>
+              <button type="button" value="managePages" id="managePages" class="btn btn-primary">Submit</button>
           </div>
           <div class="col-lg-3">
             <img class="img-circle" src="https://images.unsplash.com/photo-1476081718509-d5d0b661a376?auto=format&fit=crop&w=1833&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="Generic placeholder image" width="140" height="140">
             <h3>Manage the Site</h3>
             <p>Change your Site Name and Description. Manage your Account</p>
+              <button type="button" value="manageSite" id="manageSite" class="btn btn-primary">Submit</button>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-3">
-            <button type="button" value="showSite" id="showSite" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col-lg-3">
-            <button type="button" value="manageBlog" id="manageBlog" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col-lg-3">
-            <button type="button" value="managePages" id="managePages" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col-lg-3">
-            <button type="button" value="manageSite" id="manageSite" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
+
       </div>
     </section>
 
-    <section id="newBlog" style:"display: none">
+    <section id="newBlog" style="display: none">
       <div class="container">
         <form id="newBlogForm" class="form-horizontal">
           <legend>Create your blog </legend>
@@ -224,12 +240,16 @@
           <div>
             <button type="submit" name="submit" value="Submit" id="submitNewBlogButton" class="btn btn-primary col-md-2">Submit</button>
           </div>
+
+          <div>
+            <button type="button" name="cancel" value="cancel" id="cancelNewBlogButton" class="btn btn-secondary col-md-2">Cancel</button>
+          </div>
         </form>
       </div>
     </section>
 
 
-        <section id="newPage" style:"display: none">
+        <section id="newPage" style="display: none">
           <div class="container">
             <form id="newPageForm" class="form-horizontal">
               <legend>Create a page </legend>
@@ -262,14 +282,65 @@
             </form>
           </div>
         </section>
-        <div class="jumbotron" style="display: none" id="mySiteHeader">
-        <section id='mySite' style='display: none'>
+
+    <div class="jumbotron" style="display: none" id="mySiteHeader">
+      <section id='mySite' style='display: none'>
         </div>
         <div id='myPages'></div>
         <br>
         <div id='myBlogs'></div>
-    </section>
+        </section>
+
+        <section id="manageBlogSection" style="display: none">
+          <div class="container">
+            <div class="jumbotron">
+              <h1 id="mbTitle">title</h1>
+              <p id="mbDescription">Description</p>
+            </div>
+            <div class="col-sm-12">
+              <button type="button" name="createBlogButton" value="Create Blog Post" id="createBlogButton" class="btn btn-primary col-md-2">Create Blog Post</button>
+            </div>
+            <br>
+            <h5 id="mBlogs" style="display: none">Blog Posts: </h5>
+            <div id="mBlog">
+            </div>
+          </div>
+        </section>
+
+
+        <section id="editBlogSection" style="display: none">
+          <div class="container">
+            <form id="editBlogForm" class="form-horizontal">
+              <legend>Edit your blog </legend>
+              <div class="form-group">
+                <div class="col-sm-3">
+                  <input type="text" id="editBlogTitle" class="form-control" name="blogposts[title]" placeholder="Blog Title" autocomplete="no" required>
+                </div>
+              </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                      <textarea class="form-control" type='text' name="blogposts[textcontent]"
+                      placeholder="Once upon a time you started this blog..." id="editBlogTextArea" rows="10"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <input type="hidden" id="blogId" class="form-control" name="blogposts[id]">
+                </div>
+              <div>
+                <button type="submit" name="submit" value="Submit" id="editBlogSubmitButton" class="btn btn-primary col-md-2">Submit</button>
+              </div>
+
+              <div>
+                <button type="button" name="cancel" value="cancel" id="cancelEditBlogButton" class="btn btn-secondary col-md-2">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+
   </section>
+
+
 
 </body>
 

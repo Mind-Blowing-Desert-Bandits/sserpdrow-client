@@ -6,17 +6,24 @@ const showSiteTemplate = require('../templates/getSite.handlebars')
 const showPagesTemplate = require('../templates/showPage.handlebars')
 const showPageSuccessTemplate = require('../templates/showPageSuccess.handlebars')
 const showMySiteTemplate = require('../templates/mySite.handlebars')
+const showBlogsTemplate = require('../templates/manageBlogs.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
-  const showSites = showSitesTemplate({ sites: sites.sites })
+  const showSites = showSitesTemplate({
+    sites: sites.sites
+  })
   $('#allSites').append(showSites)
   $('#siteTitle').text('SSERPDROW')
   $('#siteDescription').text('Welcome to SSERPDROW! To view our communities\' sites please click the \'View All Sites\' link above. To create your own site/blogs please sign-up or sign-in!')
 }
 
 const getUpdatedSiteSuccess = function (data) {
-  const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
+  const userSites = data.sites.filter((site) => {
+    return site['_owner'] === store.user['_id']
+  })
+  store.site = userSites[0]
+  console.log('store.site is', store.site)
   if (userSites.length !== 0) {
     // Show the dashboard
     $('#userSignedOut').hide()
@@ -30,7 +37,6 @@ const getUpdatedSiteSuccess = function (data) {
   }
 }
 const getUpdatedSiteFailure = function (data) {
-
 }
 
 const getSitesFailure = function () {
@@ -75,8 +81,8 @@ const showPageFailure = function () {
   console.log('it failed')
 }
 
-const createSiteSuccess = function (site) {
-  store.site = site
+const createSiteSuccess = function (data) {
+  store.site = data.site
   console.log(store.site)
   $('#createASite').hide()
   $('#userDashboard').show()
@@ -89,6 +95,8 @@ const createSiteFailure = function () {
 const addBlogPostSuccess = function () {
   console.log('ui success')
   document.getElementById('newBlogForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#newBlog').hide()
 }
 
 const showMySiteSuccess = function (data) {
@@ -116,6 +124,35 @@ const showMySiteSuccess = function (data) {
   $('#myBlogs').append(myBlogs)
 }
 
+const editBlogPostSuccess = function () {
+  console.log('ui success')
+  document.getElementById('editBlogForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#editBlogSection').hide()
+}
+
+const manageBlog = function () {
+  const showBlogs = showBlogsTemplate({
+    blogs: store.site.blogposts
+  })
+  $('#mBlog').html(showBlogs)
+  $('#mbTitle').text(store.site.title)
+  $('#mbDescription').text(store.site.description)
+  console.log(store.site)
+  console.log(store.site.blogposts)
+}
+
+const updateLocalSiteVar = function (data) {
+  const userSites = data.sites.filter((site) => {
+    return site['_owner'] === store.user['_id']
+  })
+  store.site = userSites[0]
+}
+
+const deleteBlogPostSuccess = function () {
+  $('#deleteModal').modal('hide')
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -129,5 +166,9 @@ module.exports = {
   getUpdatedSiteFailure,
   addBlogPostSuccess,
   showMySiteSuccess,
-  showMyPageSuccess
+  showMyPageSuccess,
+  manageBlog,
+  updateLocalSiteVar,
+  editBlogPostSuccess,
+  deleteBlogPostSuccess
 }
