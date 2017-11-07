@@ -59,6 +59,7 @@ const signInSuccess = function (data) {
   $('#signUpModal').hide()
   $('#exampleModal').modal('hide')
   $('#userNameNav').show()
+  $('#get-sites').hide()
   store.user = data.user
   const user = store.user.email
   $('#userNameNav').append(user)
@@ -102,6 +103,7 @@ const signOutSuccess = function () {
   $('#signInMessage').show()
   $('#signUpModal').hide()
   $('#signInModal').show()
+  $('#get-sites').show()
   $('#userNameNav').text('')
 }
 
