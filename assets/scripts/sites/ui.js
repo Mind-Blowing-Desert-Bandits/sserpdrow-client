@@ -78,8 +78,8 @@ const showPageFailure = function () {
   console.log('it failed')
 }
 
-const createSiteSuccess = function (site) {
-  store.site = site
+const createSiteSuccess = function (data) {
+  store.site = data.site
   console.log(store.site)
   $('#createASite').hide()
   $('#userDashboard').show()
@@ -130,6 +130,11 @@ const manageBlog = function () {
   console.log(store.site.blogposts)
 }
 
+const updateLocalSiteVar = function (data) {
+  const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
+  store.site = userSites[0]
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -144,5 +149,6 @@ module.exports = {
   addBlogPostSuccess,
   showMySiteSuccess,
   showMyPageSuccess,
-  manageBlog
+  manageBlog,
+  updateLocalSiteVar
 }

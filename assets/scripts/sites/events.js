@@ -65,8 +65,9 @@ const newBlogPost = function (event) {
   console.log(store.site.blogposts)
   console.log(store.site)
   api.addBlogPost(store.site.blogposts)
-    .then(console.log)
     .then(ui.addBlogPostSuccess)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
     .catch(console.error)
     .then(manageBlog)
 }
