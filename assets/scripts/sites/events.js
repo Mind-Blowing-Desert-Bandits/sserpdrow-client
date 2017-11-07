@@ -48,11 +48,18 @@ const viewPage = function (event) {
   console.log('id is ', thisID)
 }
 
+const getUpdatedSiteByUser = function () {
+  api.getSites()
+    .then(ui.getUpdatedSiteSuccess)
+    .catch(ui.getSitesFailure)
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
 }
 
 module.exports = {
-  siteHandlers
+  siteHandlers,
+  getUpdatedSiteByUser
 }
