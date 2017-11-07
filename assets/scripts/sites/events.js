@@ -46,7 +46,6 @@ const viewPage = function (event) {
   console.log(pageParent)
   const thisID = pageParent.getAttribute('data-id')
   console.log('id is ', thisID)
-
 }
 
 const siteHandlers = function () {

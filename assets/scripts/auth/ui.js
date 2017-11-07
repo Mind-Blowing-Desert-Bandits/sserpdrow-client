@@ -84,6 +84,7 @@ const signInNewUserSuccess = function (data) {
   $('#exampleModal').modal('hide')
   $('#userSignedOut').hide()
   $('#signedIn').show()
+  $('#createASite').show()
 }
 
 const signOutSuccess = function () {

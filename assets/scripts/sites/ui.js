@@ -35,6 +35,8 @@ const viewSiteFailure = function () {
 const createSiteSuccess = function (site) {
   store.site = site
   console.log(store.site)
+  $('#createASite').hide()
+  $('#userDashboard').show()
 }
 
 const createSiteFailure = function () {
