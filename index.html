@@ -225,6 +225,39 @@
     </section>
 
 
+        <section id="newPage" style:"display: none">
+          <div class="container">
+            <form id="newPageForm" class="form-horizontal">
+              <legend>Create a page </legend>
+            <!-- <div>
+              <label class="radio-inline"><input type="radio" name="pages[type]" value="about">About</label>
+              <label class="radio-inline"><input type="radio" name="pages[type]" value="hours">Hours</label>
+              <label class="radio-inline"><input type="radio" name="pages[type]" value="contact">Contact</label>
+            </div> -->
+            <div class="form-group">
+              <label for="sel1">Type of page</label>
+              <select class="form-control" id="pageDropDown">
+                <option name="pages[type]">About</option>
+                <option name="pages[type]">Hours</option>
+                <option name="pages[type]">Contact</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-3">
+                <input type="text" class="form-control" name="pages[title]" placeholder="Page Title" autocomplete="no" required>
+              </div>
+            </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                      <textarea class="form-control" type='text' name="pages[textcontent]" placeholder="Page content here" id="pageTextArea" rows="10"></textarea>
+                    </div>
+                </div>
+              <div>
+                <button type="submit" name="submit" value="Submit" id="submitNewPageButton" class="btn btn-primary col-md-2">Submit</button>
+              </div>
+            </form>
+          </div>
+        </section>
 
   </section>
 

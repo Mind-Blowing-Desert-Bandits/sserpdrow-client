@@ -59,6 +59,13 @@ const newBlogPost = function (event) {
     .then(console.log)
 }
 
+const newPage = function(event) {
+  event.preventDefault()
+  console.log(this)
+  const data = getFormFields(this)
+  console.log(data)
+}
+
 const getUpdatedSiteByUser = function () {
   api.getSites()
     .then(ui.getUpdatedSiteSuccess)
@@ -69,6 +76,7 @@ const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
   $('#newBlogForm').on('submit', newBlogPost)
+  $('#newPageForm').on('submit', newPage)
 }
 
 module.exports = {
