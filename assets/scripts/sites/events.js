@@ -48,6 +48,15 @@ const viewPage = function (event) {
   console.log('id is ', thisID)
 }
 
+const newBlogPost = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data)
+  // api.addBlogPost(data)
+  //   .then(ui.addBlogPostSuccess)
+  //   .catch(ui.addBlogPostSuccess)
+}
+
 const getUpdatedSiteByUser = function () {
   api.getSites()
     .then(ui.getUpdatedSiteSuccess)
@@ -57,9 +66,11 @@ const getUpdatedSiteByUser = function () {
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
+  $('#newBlogForm').on('submit', newBlogPost)
 }
 
 module.exports = {
   siteHandlers,
-  getUpdatedSiteByUser
+  getUpdatedSiteByUser,
+  newBlogPost
 }
