@@ -104,6 +104,8 @@ const signOutSuccess = function () {
   $('#signUpModal').hide()
   $('#signInModal').show()
   $('#get-sites').show()
+  $('#signedIn').hide()
+  $('#userSignedOut').show()
   $('#userNameNav').text('')
 }
 
