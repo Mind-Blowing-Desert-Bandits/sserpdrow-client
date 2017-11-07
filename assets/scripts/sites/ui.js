@@ -10,14 +10,18 @@ const showBlogsTemplate = require('../templates/manageBlogs.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
-  const showSites = showSitesTemplate({ sites: sites.sites })
+  const showSites = showSitesTemplate({
+    sites: sites.sites
+  })
   $('#allSites').append(showSites)
   $('#siteTitle').text('SSERPDROW')
   $('#siteDescription').text('Welcome to SSERPDROW! To view our communities\' sites please click the \'View All Sites\' link above. To create your own site/blogs please sign-up or sign-in!')
 }
 
 const getUpdatedSiteSuccess = function (data) {
-  const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
+  const userSites = data.sites.filter((site) => {
+    return site['_owner'] === store.user['_id']
+  })
   store.site = userSites[0]
   console.log('store.site is', store.site)
   if (userSites.length !== 0) {
@@ -33,7 +37,6 @@ const getUpdatedSiteSuccess = function (data) {
   }
 }
 const getUpdatedSiteFailure = function (data) {
-
 }
 
 const getSitesFailure = function () {
@@ -122,7 +125,9 @@ const showMySiteSuccess = function (data) {
 }
 
 const manageBlog = function () {
-  const showBlogs = showBlogsTemplate({ blogs: store.site.blogposts })
+  const showBlogs = showBlogsTemplate({
+    blogs: store.site.blogposts
+  })
   $('#mBlog').html(showBlogs)
   $('#mbTitle').text(store.site.title)
   $('#mbDescription').text(store.site.description)
@@ -131,7 +136,9 @@ const manageBlog = function () {
 }
 
 const updateLocalSiteVar = function (data) {
-  const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
+  const userSites = data.sites.filter((site) => {
+    return site['_owner'] === store.user['_id']
+  })
   store.site = userSites[0]
 }
 

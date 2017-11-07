@@ -280,10 +280,34 @@
             <div id="mBlog">
             </div>
           </div>
-
-
-
         </section>
+
+
+        <section id="editBlogSection" style="display: none">
+          <div class="container">
+            <form id="editBlogForm" class="form-horizontal">
+              <legend>Edit your blog </legend>
+              <div class="form-group">
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" name="blogposts[title]" placeholder="Blog Title" autocomplete="no" required>
+                </div>
+              </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                      <textarea class="form-control" type='text' name="blogposts[textcontent]" placeholder="Once upon a time you started this blog..." id="exampleTextarea" rows="10"></textarea>
+                    </div>
+                </div>
+              <div>
+                <button type="submit" name="submit" value="Submit" id="editBlogSubmitButton" class="btn btn-primary col-md-2">Submit</button>
+              </div>
+
+              <div>
+                <button type="button" name="cancel" value="cancel" id="cancelEditBlogButton" class="btn btn-secondary col-md-2">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
 
   </section>
 

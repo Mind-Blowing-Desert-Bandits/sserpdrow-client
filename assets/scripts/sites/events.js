@@ -115,6 +115,12 @@ const manageBlog = function () {
   // Hide dashboard
   $('#userDashboard').hide()
   ui.manageBlog()
+  $('.editBlog').on('click', function (event) {
+    const div = $(this).parents()[4]
+    const dataId = $(div).attr('data-id')
+    showEditBlogForm()
+  })
+  console.log('click handler edit worked')
   $('#manageBlogSection').show()
   // Take information from site and use handlebars to create page that displays the blogs similar to when logged out with crud buttons
 }
@@ -128,6 +134,12 @@ const cancelNewBlog = function () {
   $('#newBlog').hide()
   $('#manageBlogSection').show()
   document.getElementById('newBlogForm').reset()
+}
+
+const showEditBlogForm = function () {
+  $('#manageBlogSection').hide()
+  $('#editBlogSection').show()
+  console.log('edit button works')
 }
 
 const siteHandlers = function () {
