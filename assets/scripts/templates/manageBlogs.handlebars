@@ -1,31 +1,18 @@
 {{#each blogs as |blog|}}
-
- <!-- Developers, why are we using data-id and not just id? -->
-<div class="col-xs-8 col-md-8 minibox">
-  <ul data-id="{{blog.id}}">
-    <li>
+<br>
+  <div class="panel panel-info" data-id="{{blog.id}}">
     {{#if blog.title}}
-    <small><b>Title:</b> {{blog.title}}</small>
+      <div class="panel-heading">{{blog.title}} - {{blog.date}}</div>
     {{else}}
-    <b>No Title</b>
-    {{/if}}</li>
+      <div class="panel-heading">No Title - {{blog.date}}</div>
+    {{/if}}
+      <div class="panel-body">
+        {{blog.textcontent}}
+      </div>
+    </div>
+  </div>
 
-    <p>
-    {{#if blog.textcontent}}
-    <small> {{blog.textcontent}}</small>
-    {{else}}
-    <b>No Content</b>
-    {{/if}}</p>
 
-    <li>
-    {{#if blog.date}}
-    <small><b>Published Date:</b> {{blog.date}}</small>
-    {{else}}
-    <b>No Publish Date</b>
-    {{/if}}</li>
 
-    <br>
-  </ul>
-
-</div>
+<!-- new Date.toISOString().split(‘T’)[0] -->
 {{/each}}

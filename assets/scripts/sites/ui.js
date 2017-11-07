@@ -121,7 +121,9 @@ const showMySiteSuccess = function (data) {
 
 const manageBlog = function () {
   const showBlogs = showBlogsTemplate({ blogs: store.site.blogposts })
-  $('#mBlog').html(showBlogs)
+  $('#mBlog').append(showBlogs)
+  $('#mbTitle').text(store.site.title)
+  $('#mbDescription').text(store.site.description)
   console.log(store.site)
   console.log(store.site.blogposts)
 }
