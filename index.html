@@ -204,7 +204,6 @@
     </section>
 
     <section id="newBlog" style:"display: none">
-      <!-- style="display: none" -->
       <div class="container">
         <form id="newBlogForm" class="form-horizontal">
           <legend>Create your blog </legend>
@@ -213,19 +212,14 @@
               <input type="text" class="form-control" name="blogposts[title]" placeholder="Blog Title" autocomplete="no" required>
             </div>
           </div>
-          <div class="form-group">
-            <!-- <label class="control-label col-sm-2" for="pwd">Site Description:</label> -->
-
             <div class="col-sm-12">
               <!-- <input type="text" class="form-control" name="blogpost[textcontent]" placeholder="Once upon a time you started this blog..." autocomplete="no"> -->
                 <div class="form-group">
-                  <textarea class="form-control" placeholder="Once upon a time you started this blog..." id="exampleTextarea" rows="10"></textarea>
+                  <textarea class="form-control" type='text' placeholder="Once upon a time you started this blog..." id="exampleTextarea" rows="10"></textarea>
                 </div>
             </div>
-
-          </div>
           <div>
-            <button type="submit" name="submit" value="Submit" id="submitNewBlogButton" class="btn btn-primary col-sm-2">Submit</button>
+            <button type="submit" name="submit" value="Submit" id="submitNewBlogButton" class="btn btn-primary col-md-2">Submit</button>
           </div>
         </form>
       </div>
