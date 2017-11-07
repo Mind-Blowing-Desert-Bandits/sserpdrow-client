@@ -108,7 +108,7 @@ const signOutSuccess = function () {
   $('#userSignedOut').show()
   $('#userNameNav').text('')
   $('#siteTitle').text('SSERPDROW')
-  $('#siteDescription').text('Welcome to SSERPDROW! To view our communities sites please click the button below. To create your own site/blogs please sign-up or sign-in!')
+  $('#siteDescription').text('Welcome to SSERPDROW! To view our communities\' sites please click the button below. To create your own site/blogs please sign-up or sign-in!')
   $('#blogs').text('')
   $('#allSites').text('')
   $('#sitePages').text('')
