@@ -59,8 +59,6 @@ const signInSuccess = function (data) {
   $('#userNameNav').show()
   $('#get-sites').hide()
   $('#mySite').hide()
-  $('#newBlog').show()
-  $('#newPage').show()
   $('#myPages').hide()
   $('#myBlogs').hide()
   $('#mySiteHeader').hide()
