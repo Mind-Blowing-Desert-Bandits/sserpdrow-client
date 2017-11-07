@@ -21,7 +21,8 @@ const onGetSites = function (event) {
 const viewSite = function (event) {
   event.preventDefault()
   const site = event.target
-  const siteId = site.parentNode
+  const siteId = site.parentNode.parentNode
+  console.log('this is site id ', siteId)
   const thisSiteID = siteId.getAttribute('data-id')
   api.getSite(thisSiteID)
     .then(ui.viewSiteSuccess)

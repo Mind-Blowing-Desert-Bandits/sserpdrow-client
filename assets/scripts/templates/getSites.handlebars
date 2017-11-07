@@ -1,20 +1,21 @@
+
+<!-- New  -->
 {{#each sites as |site|}}
-
- <!-- Developers, why are we using data-id and not just id? -->
-<div class="col-xs-8 col-md-8 minibox">
-  <ul data-id="{{site.id}}">
-    <li>
+<br>
+  <div class="panel panel-info" data-id="{{site.id}}">
     {{#if site.title}}
-    <medium>{{site.title}}</medium>
+      <div class="panel-heading">{{site.title}}</div>
     {{else}}
-    <b>No Title</b>
-    {{/if}}</li>
-    <br>
-    <button class="view">View Site</button>
-    <br>
-    <br>
-    <br>
-  </ul>
-
-</div>
+      <div class="panel-heading">No Title</div>
+        {{/if}}
+      {{#if site.description}}
+        <div class="panel-body">{{site.description}}</div>
+      {{else}}
+        <div class="panel-body">No Description</div>
+    {{/if}}
+      <div class="panel-footer">
+        <button class="view btn btn-primary">View Site</button>
+      </div>
+    </div>
+  </div>
 {{/each}}

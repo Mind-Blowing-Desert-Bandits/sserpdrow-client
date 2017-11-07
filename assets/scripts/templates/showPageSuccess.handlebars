@@ -1,23 +1,13 @@
-
-
- <!-- Developers, why are we using data-id and not just id? -->
- <div>
-   <ul data-id="{{page.id}}">
-     <h1>
+ <!-- New  -->
+ <br>
+   <div class="panel panel-info" data-id="{{page.id}}">
      {{#if page.title}}
-     <small><b>Title:</b> {{page.title}}</small>
+       <div class="panel-heading">{{page.title}}</div>
      {{else}}
-     <b>No Title</b>
-     {{/if}}</h1>
-
-     <p>
-     {{#if page.textcontent}}
-     <small> {{page.textcontent}}</small>
-     {{else}}
-     <b>No Content</b>
-     {{/if}}</p>
-
-     <br>
-   </ul>
-
- </div>
+       <div class="panel-heading">No Title</div>
+     {{/if}}
+       <div class="panel-body">
+         {{page.textcontent}}
+       </div>
+     </div>
+   </div>
