@@ -90,6 +90,7 @@ const showMySiteSuccess = function (data) {
   const blogs = site.site.blogposts
   const mySite = showMySiteTemplate({ site: site })
   const myPages = showPagesTemplate({ pages: pages })
+  const myBlogs = showSiteTemplate({ blogs: blogs })
   console.log('site is ', site.site.blogposts)
   $('#userDashboard').hide()
   $('#newBlog').hide()
@@ -100,6 +101,8 @@ const showMySiteSuccess = function (data) {
   $('#mySite').append(mySite)
   $('#myPages').text('')
   $('#myPages').append(myPages)
+  $('#myBlogs').text('')
+  $('#myBlogs').append(myBlogs)
 }
 
 module.exports = {
