@@ -38,10 +38,10 @@ const onSignIn = function (event) {
 
 const onSignUpLinkClick = function (event) {
   event.preventDefault()
-  $('#sign-up').show()
-  $('#sign-in').hide()
-  $('#signInModal').show()
-  $('#signUpModal').hide()
+  $('#sign-up').hide()
+  $('#sign-in').show()
+  $('#signInModal').hide()
+  $('#signUpModal').show()
   $('#messageContent').text('')
   $('#signInMessage').text('')
 }
