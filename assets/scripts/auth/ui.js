@@ -58,6 +58,7 @@ const signInSuccess = function (data) {
   $('#exampleModal').modal('hide')
   $('#userNameNav').show()
   $('#get-sites').hide()
+  $('#mySite').hide()
   store.user = data.user
   console.log('store.user is ', store.user)
   const user = store.user.email

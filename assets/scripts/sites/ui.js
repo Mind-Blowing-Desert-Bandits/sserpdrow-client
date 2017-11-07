@@ -5,6 +5,7 @@ const showSitesTemplate = require('../templates/getSites.handlebars')
 const showSiteTemplate = require('../templates/getSite.handlebars')
 const showPagesTemplate = require('../templates/showPage.handlebars')
 const showPageSuccessTemplate = require('../templates/showPageSuccess.handlebars')
+const showMySiteTemplate = require('../templates/mySite.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
@@ -83,7 +84,17 @@ const addBlogPostSuccess = function () {
 }
 
 const showMySiteSuccess = function (data) {
-  console.log('data is ', data)
+  store.mySite = data
+  const site = store.mySite
+  const mySite = showMySiteTemplate({ site: site })
+  console.log('site is ', site)
+  $('#userDashboard').hide()
+  $('#newBlog').hide()
+  $('#newPage').hide()
+  $('#createASite').hide()
+  $('#mySite').text('')
+  $('#mySite').show()
+  $('#mySite').append(mySite)
 }
 
 module.exports = {
