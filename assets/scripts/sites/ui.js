@@ -50,6 +50,14 @@ const viewSiteFailure = function () {
   $('#allSites').text('Please try again')
 }
 
+const showPageSuccess = function () {
+  console.log(store.page.title)
+}
+
+const showPageFailure = function () {
+  console.log('it failed')
+}
+
 const createSiteSuccess = function (site) {
   store.site = site
   console.log(store.site)
@@ -71,6 +79,8 @@ module.exports = {
   getSitesFailure,
   viewSiteSuccess,
   viewSiteFailure,
+  showPageSuccess,
+  showPageFailure,
   createSiteSuccess,
   createSiteFailure,
   getUpdatedSiteSuccess,
