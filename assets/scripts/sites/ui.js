@@ -17,6 +17,8 @@ const getSitesSuccess = function (sites) {
 
 const getUpdatedSiteSuccess = function (data) {
   const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
+  store.site = userSites
+  console.log('store.site is', store.site)
   if (userSites.length !== 0) {
     // Show the dashboard
     $('#userSignedOut').hide()
