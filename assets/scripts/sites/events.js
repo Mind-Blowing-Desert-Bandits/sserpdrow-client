@@ -5,7 +5,6 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store.js')
 
-
 const onGetSites = function (event) {
   event.preventDefault()
   $('#allSites').text('')
@@ -47,7 +46,12 @@ const viewPage = function (event) {
   const pageId = page.parentNode
   const pageParent = pageId.parentNode
   const thisID = pageParent.getAttribute('data-id')
-  console.log('id is ', thisID)
+  for (let i = 0; i < store.site.site.pages.length; i++) {
+    if (store.site.site.pages[i].id === thisID) {
+      store.page = store.site.site.pages[i]
+    }
+  }
+  ui.showPageSuccess()
 }
 
 const newBlogPost = function (event) {
@@ -72,13 +76,6 @@ const getUpdatedSiteByUser = function () {
   api.getSites()
     .then(ui.getUpdatedSiteSuccess)
     .catch(ui.getSitesFailure)
-  for (let i = 0; i < store.site.site.pages.length; i++) {
-    if (store.site.site.pages[i].id === thisID) {
-      store.page = store.site.site.pages[i]
-    }
-  }
-  ui.showPageSuccess()
-
 }
 
 const siteHandlers = function () {

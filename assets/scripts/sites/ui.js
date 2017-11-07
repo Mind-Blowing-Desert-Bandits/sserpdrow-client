@@ -36,7 +36,6 @@ const getSitesFailure = function () {
 const viewSiteSuccess = function (site) {
   store.site = site
   const showSite = showSiteTemplate({ blogs: site.site.blogposts })
-  console.log('this is a site title ', site.site.pages)
   const showPages = showPagesTemplate({ pages: site.site.pages })
   $('#allSites').text('')
   $('#siteTitle').text(site.site.title)
