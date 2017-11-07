@@ -57,6 +57,7 @@ const signInSuccess = function (data) {
   $('#changePassword').show()
   $('#signedOut').hide()
   $('#signUpModal').hide()
+  $('#exampleModal').modal('hide')
   $('#userNameNav').show()
   store.user = data.user
   const user = store.user.email
