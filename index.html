@@ -93,70 +93,175 @@
     </div>
 
     <div class="container">
-<div class="jumbotron">
+      <div class="jumbotron">
 
-      <h1 id='siteTitle'>Example</h1>
+        <h1 id="siteTitle">Example</h1>
 
-     <p id='siteDescription'></p>
+        <p id="siteDescription"></p>
 
-      <button id="get-sites" type="submit" name="submit" value="All sites" class="btn btn-primary">View All Sites</button>
-    </div>
-    <section id="signedOut" style="display: none" class="message">You have been logged out.</section>
-      <div id='sitePages' class='show-pages'></div>
-      <h5 id='blogs' style='display: none'>Blog Posts: </h5>
-      <div id='allSites' class='showSites'>
+        <button id="get-sites" type="submit" name="submit" value="All sites" class="btn btn-primary">View All Sites</button>
+      </div>
+      <section id="signedOut" style="display: none" class="message">You have been logged out.</section>
+      <div id="sitePages" class="show-pages"></div>
+      <h5 id="blogs" style="display: none">Blog Posts: </h5>
+      <div id="allSites" class="showSites">
       </div>
     </div>
   </section>
 
 
-
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h4 class="modal-title" id="exampleModalLabel">Sign Up/In</h4> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-          </div>
-          <div class="modal-body">
-            <form id="change-password">
-              <fieldset>
-                <legend>Change Password:</legend>
-                <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
-                <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
-                <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
-                <section id="passwordChange"></section>
-              </fieldset>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="passwordClose">Close</button>
-          </div>
+        </div>
+        <div class="modal-body">
+          <form id="change-password">
+            <fieldset>
+              <legend>Change Password:</legend>
+              <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
+              <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
+              <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
+              <section id="passwordChange"></section>
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="passwordClose">Close</button>
         </div>
       </div>
     </div>
-
-      <section id="signedIn" style="display: none">
-
+  </div>
 
 
-    <section id="createASite">
+  <section id="signedIn" style="display: none">
+
+    <section id="createASite" style="display: none">
       <div class="container">
-        <form id="create-a-site">
-          <legend>What would you like to name your Site?</legend>
+        <form id="create-a-site" class="form-horizontal">
+          <legend>Create a Blogging Site</legend>
           <div class="form-group">
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="site[title]" placeholder="Enter Your Site Name" autocomplete="no" required>
+            <label class="control-label col-sm-2" for="pwd">Site Name:</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" name="site[title]" placeholder="What should the name of your site be?" autocomplete="no" required>
             </div>
           </div>
-          <button type="submit" name="submit" value="Submit" id="createASiteTitleButton" class="btn btn-primary">Submit</button>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Site Description:</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" name="site[description]" placeholder="What is your Blog about?" autocomplete="no">
+            </div>
+          </div>
+          <div>
+            <button type="submit" name="submit" value="Submit" id="createASiteTitleButton" class="btn btn-primary col-sm-offset-4">Submit</button>
+          </div>
         </form>
       </div>
     </section>
-  </section>
 
+
+    <section id="userDashboard" class="userdashboard" style="display: none">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <img class="img-circle" src="https://images.unsplash.com/photo-1481667172655-97ac4e21c7c5?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="blog image" width="140" height="140">
+            <h3>Show Your Site</h3>
+            <p>See how your site is being displayed to the world</p>
+          </div>
+          <div class="col-lg-3">
+            <img class="img-circle" src="https://images.unsplash.com/photo-1441109296207-fd911f7cd5e5?auto=format&fit=crop&w=1971&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="blog image" width="140" height="140">
+            <h3>Manage Blog Posts</h3>
+            <p>Create, Edit, Update, and Delete Blog Posts</p>
+          </div>
+          <div class="col-lg-3">
+            <img class="img-circle" src="https://images.unsplash.com/photo-1455651264681-40d634a35ce4?auto=format&fit=crop&w=1867&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="pages image" width="140" height="140">
+            <h3>Manage Pages</h3>
+            <p>Create, Edit, Update, and Delete Your Pages</p>
+          </div>
+          <div class="col-lg-3">
+            <img class="img-circle" src="https://images.unsplash.com/photo-1476081718509-d5d0b661a376?auto=format&fit=crop&w=1833&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="Generic placeholder image" width="140" height="140">
+            <h3>Manage the Site</h3>
+            <p>Change your Site Name and Description. Manage your Account</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <button type="button" value="showSite" id="showSite" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col-lg-3">
+            <button type="button" value="manageBlog" id="manageBlog" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col-lg-3">
+            <button type="button" value="managePages" id="managePages" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col-lg-3">
+            <button type="button" value="manageSite" id="manageSite" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="newBlog" style:"display: none">
+      <div class="container">
+        <form id="newBlogForm" class="form-horizontal">
+          <legend>Create your blog </legend>
+          <div class="form-group">
+            <div class="col-sm-3">
+              <input type="text" class="form-control" name="blogposts[title]" placeholder="Blog Title" autocomplete="no" required>
+            </div>
+          </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                  <textarea class="form-control" type='text' name="blogposts[textcontent]" placeholder="Once upon a time you started this blog..." id="exampleTextarea" rows="10"></textarea>
+                </div>
+            </div>
+          <div>
+            <button type="submit" name="submit" value="Submit" id="submitNewBlogButton" class="btn btn-primary col-md-2">Submit</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
+        <section id="newPage" style:"display: none">
+          <div class="container">
+            <form id="newPageForm" class="form-horizontal">
+              <legend>Create a page </legend>
+            <!-- <div>
+              <label class="radio-inline"><input type="radio" name="pages[type]" value="about">About</label>
+              <label class="radio-inline"><input type="radio" name="pages[type]" value="hours">Hours</label>
+              <label class="radio-inline"><input type="radio" name="pages[type]" value="contact">Contact</label>
+            </div> -->
+            <div class="form-group">
+              <label for="sel1">Type of page</label>
+              <select class="form-control" name="pages[type]" id="pageDropDown">
+                <option name="pages[type]">About</option>
+                <option name="pages[type]">Hours</option>
+                <option name="pages[type]">Contact</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-3">
+                <input type="text" class="form-control" name="pages[title]" placeholder="Page Title" autocomplete="no" required>
+              </div>
+            </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                      <textarea class="form-control" type='text' name="pages[textcontent]" placeholder="Page content here" id="pageTextArea" rows="10"></textarea>
+                    </div>
+                </div>
+              <div>
+                <button type="submit" name="submit" value="Submit" id="submitNewPageButton" class="btn btn-primary col-md-2">Submit</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+  </section>
 
 </body>
 

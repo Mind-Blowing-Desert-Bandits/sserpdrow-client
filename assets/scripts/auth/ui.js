@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const sitesEvents = require('../sites/events.js')
 
 const signUpSuccess = function (data) {
   $('#messageContent').text('You have signed up as ' + data.user.email)
@@ -56,10 +57,12 @@ const signInSuccess = function (data) {
   $('#changePassword').show()
   $('#signedOut').hide()
   $('#signUpModal').hide()
+  $('#exampleModal').modal('hide')
   $('#userNameNav').show()
   store.user = data.user
   const user = store.user.email
   $('#userNameNav').append(user)
+  sitesEvents.getUpdatedSiteByUser()
 }
 
 const signInFailure = function () {
@@ -84,6 +87,7 @@ const signInNewUserSuccess = function (data) {
   $('#exampleModal').modal('hide')
   $('#userSignedOut').hide()
   $('#signedIn').show()
+  $('#createASite').show()
 }
 
 const signOutSuccess = function () {
@@ -100,12 +104,7 @@ const signOutSuccess = function () {
   $('#signInModal').show()
   $('#userNameNav').text('')
 }
-const getSitesSuccess = function (data) {
-  console.log('This is the returned index of data:', data.sites)
-  console.log(store.user)
-  const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
-  console.log(userSites)
-}
+
 const signOutFailure = function () {
   $('#signedOut').text('Please try again.')
 }
@@ -135,6 +134,5 @@ module.exports = {
   signOutFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  getSitesSuccess,
   signInNewUserSuccess
 }

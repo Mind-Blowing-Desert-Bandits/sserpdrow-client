@@ -11,6 +11,24 @@ const getSitesSuccess = function (sites) {
   $('#allSites').append(showSites)
 }
 
+const getUpdatedSiteSuccess = function (data) {
+  const userSites = data.sites.filter((site) => { return site['_owner'] === store.user['_id'] })
+  if (userSites.length !== 0) {
+    // Show the dashboard
+    $('#userSignedOut').hide()
+    $('#signedIn').show()
+    $('#userDashboard').show()
+  } else {
+    // Have them create a site
+    $('#userSignedOut').hide()
+    $('#signedIn').show()
+    $('#createASite').show()
+  }
+}
+const getUpdatedSiteFailure = function (data) {
+
+}
+
 const getSitesFailure = function () {
   $('#allSites').text('Please try again')
 }
@@ -43,10 +61,17 @@ const showPageFailure = function () {
 const createSiteSuccess = function (site) {
   store.site = site
   console.log(store.site)
+  $('#createASite').hide()
+  $('#userDashboard').show()
 }
 
 const createSiteFailure = function () {
   console.log('failure')
+}
+
+const addBlogPostSuccess = function () {
+  console.log('ui success')
+  document.getElementById('newBlogForm').reset()
 }
 
 module.exports = {
@@ -57,5 +82,8 @@ module.exports = {
   showPageSuccess,
   showPageFailure,
   createSiteSuccess,
-  createSiteFailure
+  createSiteFailure,
+  getUpdatedSiteSuccess,
+  getUpdatedSiteFailure,
+  addBlogPostSuccess
 }
