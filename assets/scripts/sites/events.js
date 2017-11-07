@@ -78,11 +78,19 @@ const getUpdatedSiteByUser = function () {
     .catch(ui.getSitesFailure)
 }
 
+const showMySite = function (event) {
+  event.preventDefault()
+  api.getMySite()
+    .then(ui.showMySiteSuccess)
+    .catch(ui.showMySiteFailure)
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
   $('#newBlogForm').on('submit', newBlogPost)
   $('#newPageForm').on('submit', newPage)
+  $('#showSite').on('click', showMySite)
 }
 
 module.exports = {

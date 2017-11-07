@@ -59,6 +59,7 @@ const signInSuccess = function (data) {
   $('#userNameNav').show()
   $('#get-sites').hide()
   store.user = data.user
+  console.log('store.user is ', store.user)
   const user = store.user.email
   $('#userNameNav').append(user)
   sitesEvents.getUpdatedSiteByUser()

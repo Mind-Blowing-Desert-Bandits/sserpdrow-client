@@ -41,9 +41,20 @@ const addBlogPost = function (data) {
   })
 }
 
+const getMySite = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/sites' + '/5a00b686fabc1901c06cda29',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   getSites,
   getSite,
   createSite,
-  addBlogPost
+  addBlogPost,
+  getMySite
 }

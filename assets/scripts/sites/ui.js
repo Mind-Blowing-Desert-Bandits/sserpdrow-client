@@ -82,6 +82,10 @@ const addBlogPostSuccess = function () {
   document.getElementById('newBlogForm').reset()
 }
 
+const showMySiteSuccess = function (data) {
+  console.log('data is ', data)
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -93,5 +97,6 @@ module.exports = {
   createSiteFailure,
   getUpdatedSiteSuccess,
   getUpdatedSiteFailure,
-  addBlogPostSuccess
+  addBlogPostSuccess,
+  showMySiteSuccess
 }
