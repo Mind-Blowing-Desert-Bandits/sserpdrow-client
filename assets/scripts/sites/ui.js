@@ -124,6 +124,13 @@ const showMySiteSuccess = function (data) {
   $('#myBlogs').append(myBlogs)
 }
 
+const editBlogPostSuccess = function () {
+  console.log('ui success')
+  document.getElementById('editBlogForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#editBlogSection').hide()
+}
+
 const manageBlog = function () {
   const showBlogs = showBlogsTemplate({
     blogs: store.site.blogposts
@@ -157,5 +164,6 @@ module.exports = {
   showMySiteSuccess,
   showMyPageSuccess,
   manageBlog,
-  updateLocalSiteVar
+  updateLocalSiteVar,
+  editBlogPostSuccess
 }

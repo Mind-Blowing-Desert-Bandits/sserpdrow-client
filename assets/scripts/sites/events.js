@@ -119,10 +119,24 @@ const manageBlog = function () {
     const div = $(this).parents()[4]
     const dataId = $(div).attr('data-id')
     showEditBlogForm()
+    dataIdFilter(dataId)
   })
   console.log('click handler edit worked')
   $('#manageBlogSection').show()
   // Take information from site and use handlebars to create page that displays the blogs similar to when logged out with crud buttons
+}
+
+const dataIdFilter = function (dataId) {
+  const blogpost = store.site.blogposts.filter((blog) => {
+    return blog.id === dataId
+  })[0]
+  console.log(blogpost)
+  console.log(blogpost.textcontent)
+  console.log(blogpost.title)
+  $('#editBlogTextArea').val(blogpost.textcontent)
+  $('#editBlogTitle').val(blogpost.title)
+  $('#blogId').val(blogpost.id)
+  console.log($('#blogId').val())
 }
 
 const showCreateBlogForm = function () {
@@ -136,10 +150,35 @@ const cancelNewBlog = function () {
   document.getElementById('newBlogForm').reset()
 }
 
+const cancelEditBlog = function () {
+  $('#editBlogSection').hide()
+  $('#manageBlogSection').show()
+  document.getElementById('editBlogForm').reset()
+}
+
 const showEditBlogForm = function () {
   $('#manageBlogSection').hide()
   $('#editBlogSection').show()
   console.log('edit button works')
+}
+
+const editBlogContent = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  store.site.blogposts.forEach((blog, index) => {
+    console.log(blog, index)
+    if (blog.id === data.blogposts.id) {
+      store.site.blogposts[index].title = data.blogposts.title
+      store.site.blogposts[index].textcontent = data.blogposts.textcontent
+    }
+  })
+  console.log(store.site.blogposts)
+  api.addBlogPost(store.site.blogposts)
+    .then(ui.editBlogPostSuccess)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(manageBlog)
 }
 
 const siteHandlers = function () {
@@ -151,6 +190,8 @@ const siteHandlers = function () {
   $('#manageBlog').on('click', manageBlog)
   $('#createBlogButton').on('click', showCreateBlogForm)
   $('#cancelNewBlogButton').on('click', cancelNewBlog)
+  $('#cancelEditBlogButton').on('click', cancelEditBlog)
+  $('#editBlogForm').on('submit', editBlogContent)
 }
 
 module.exports = {
