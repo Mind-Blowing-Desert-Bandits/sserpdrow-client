@@ -124,16 +124,10 @@ const manageBlog = function () {
   $('.deleteBlog').on('click', function (event) {
     const div = $(this).parents()[4]
     const dataId = $(div).attr('data-id')
-    // showing confirmation that want to delete
-    // showDeleteWarning()
-    //
-    // deleteFilter(dataId)
-    console.log('clickWorked')
+    $('#deleteBlogId').val(dataId)
     $('#deleteModal').modal('show')
   })
-  console.log('click handler edit worked')
   $('#manageBlogSection').show()
-  // Take information from site and use handlebars to create page that displays the blogs similar to when logged out with crud buttons
 }
 
 const dataIdFilter = function (dataId) {
@@ -191,6 +185,21 @@ const editBlogContent = function (event) {
     .then(manageBlog)
 }
 
+const deleteBlog = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data.blogposts.id)
+  store.site.blogposts = store.site.blogposts.filter((blog) => {
+    return blog.id !== data.blogposts.id
+  })
+  api.addBlogPost(store.site.blogposts)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(manageBlog)
+    .then(ui.deleteBlogPostSuccess)
+}
+
 const closeDeleteModal = function () {
   $('#deleteModal').modal('hide')
 }
@@ -207,6 +216,7 @@ const siteHandlers = function () {
   $('#cancelEditBlogButton').on('click', cancelEditBlog)
   $('#editBlogForm').on('submit', editBlogContent)
   $('.noDelete').on('click', closeDeleteModal)
+  $('#yesDeleteForm').on('submit', deleteBlog)
 }
 
 module.exports = {

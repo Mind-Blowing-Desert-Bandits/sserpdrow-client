@@ -149,6 +149,10 @@ const updateLocalSiteVar = function (data) {
   store.site = userSites[0]
 }
 
+const deleteBlogPostSuccess = function () {
+  $('#deleteModal').modal('hide')
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -165,5 +169,6 @@ module.exports = {
   showMyPageSuccess,
   manageBlog,
   updateLocalSiteVar,
-  editBlogPostSuccess
+  editBlogPostSuccess,
+  deleteBlogPostSuccess
 }
