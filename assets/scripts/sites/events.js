@@ -57,9 +57,14 @@ const viewPage = function (event) {
 const newBlogPost = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
+  const newBlog = {
+    title: data.blogposts.title,
+    textcontent: data.blogposts.textcontent
+  }
+  store.site.blogposts.push(newBlog)
+  console.log(store.site.blogposts)
   console.log(store.site)
-  api.addBlogPost(data)
+  api.addBlogPost(store.site.blogposts)
     .then(ui.addBlogPostSuccess)
     .catch(console.error)
     .then(console.log)
@@ -112,6 +117,11 @@ const manageBlog = function () {
   // Take information from site and use handlebars to create page that displays the blogs similar to when logged out with crud buttons
 }
 
+const showCreateBlogForm = function () {
+  $('#newBlog').show()
+  $('#manageBlogSection').hide()
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -119,6 +129,7 @@ const siteHandlers = function () {
   $('#newPageForm').on('submit', newPage)
   $('#showSite').on('click', showMySite)
   $('#manageBlog').on('click', manageBlog)
+  $('#createBlogButton').on('click', showCreateBlogForm)
 }
 
 module.exports = {
