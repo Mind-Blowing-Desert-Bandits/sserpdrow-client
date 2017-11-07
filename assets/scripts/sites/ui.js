@@ -86,8 +86,11 @@ const addBlogPostSuccess = function () {
 const showMySiteSuccess = function (data) {
   store.mySite = data
   const site = store.mySite
+  const pages = site.site.pages
+  const blogs = site.site.blogposts
   const mySite = showMySiteTemplate({ site: site })
-  console.log('site is ', site)
+  const myPages = showPagesTemplate({ pages: pages })
+  console.log('site is ', site.site.blogposts)
   $('#userDashboard').hide()
   $('#newBlog').hide()
   $('#newPage').hide()
@@ -95,6 +98,8 @@ const showMySiteSuccess = function (data) {
   $('#mySite').text('')
   $('#mySite').show()
   $('#mySite').append(mySite)
+  $('#myPages').text('')
+  $('#myPages').append(myPages)
 }
 
 module.exports = {
