@@ -65,9 +65,10 @@ const newBlogPost = function (event) {
   console.log(store.site.blogposts)
   console.log(store.site)
   api.addBlogPost(store.site.blogposts)
+    .then(console.log)
     .then(ui.addBlogPostSuccess)
     .catch(console.error)
-    .then(console.log)
+    .then(manageBlog)
 }
 
 const newPage = function (event) {
@@ -122,6 +123,11 @@ const showCreateBlogForm = function () {
   $('#manageBlogSection').hide()
 }
 
+const cancelNewBlog = function () {
+  $('#newBlog').hide()
+  $('#manageBlogSection').show()
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -130,6 +136,7 @@ const siteHandlers = function () {
   $('#showSite').on('click', showMySite)
   $('#manageBlog').on('click', manageBlog)
   $('#createBlogButton').on('click', showCreateBlogForm)
+  $('#cancelNewBlogButton').on('click', cancelNewBlog)
 }
 
 module.exports = {

@@ -92,6 +92,8 @@ const createSiteFailure = function () {
 const addBlogPostSuccess = function () {
   console.log('ui success')
   document.getElementById('newBlogForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#newBlog').hide()
 }
 
 const showMySiteSuccess = function (data) {
@@ -121,7 +123,7 @@ const showMySiteSuccess = function (data) {
 
 const manageBlog = function () {
   const showBlogs = showBlogsTemplate({ blogs: store.site.blogposts })
-  $('#mBlog').append(showBlogs)
+  $('#mBlog').html(showBlogs)
   $('#mbTitle').text(store.site.title)
   $('#mbDescription').text(store.site.description)
   console.log(store.site)
