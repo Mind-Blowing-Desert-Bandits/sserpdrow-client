@@ -126,6 +126,7 @@ const showCreateBlogForm = function () {
 const cancelNewBlog = function () {
   $('#newBlog').hide()
   $('#manageBlogSection').show()
+  document.getElementById('newBlogForm').reset()
 }
 
 const siteHandlers = function () {
