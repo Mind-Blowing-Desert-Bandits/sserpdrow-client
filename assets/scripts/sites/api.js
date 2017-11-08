@@ -11,7 +11,6 @@ const getSites = function () {
 }
 
 const getSite = function (thisID) {
-  console.log('thisID', thisID)
   return $.ajax({
     url: config.apiOrigin + '/sites/' + thisID
   })
@@ -35,7 +34,6 @@ const addBlogPost = function (data) {
     }
   }
 
-  console.log('api data is', data)
   return $.ajax({
     url: config.apiOrigin + '/sites/' + store.site.id,
     method: 'PATCH',
@@ -52,7 +50,6 @@ const deleteBlogPost = function (data) {
       'blogID': data
     }
   }
-  console.log('api data is', data)
   return $.ajax({
     url: config.apiOrigin + '/deleteblogpost',
     method: 'PATCH',
@@ -85,7 +82,6 @@ const deletePageAPI = function (data) {
       'pageID': data
     }
   }
-  console.log('api data is', updatedata)
   return $.ajax({
     url: config.apiOrigin + '/deletepage',
     method: 'PATCH',

@@ -91,7 +91,6 @@ const showPageFailure = function (error) {
 
 const createSiteSuccess = function (data) {
   store.site = data.site
-  console.log(store.site)
   document.getElementById('create-a-site').reset()
   $('#createASiteMessage').text('')
   $('#dashboardLink').show()
@@ -282,7 +281,6 @@ const deleteSiteFailure = function (error) {
 
 const managePages = function () {
   const showMyPages = showMyPagesTemplate({ pages: store.site.pages })
-  console.log('stored pages are ', store.site.pages)
   $('#mPage').html(showMyPages)
   $('#pageTitle').text(store.site.title)
   $('#pageDescription').text(store.site.description)

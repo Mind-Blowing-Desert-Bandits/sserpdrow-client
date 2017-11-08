@@ -84,7 +84,6 @@ const newPage = function (event) {
     textcontent: data.pages.textcontent
   }
   store.site.pages.push(newPageObject)
-  console.log('stored pages are ', store.site.pages)
   api.addPage(store.site.pages)
     .then(ui.addPageSuccess)
     .then(api.getSites)
@@ -155,12 +154,10 @@ const dataPageIdFilter = function (dataId) {
   const page = store.site.pages.filter((page) => {
     return page.id === dataId
   })[0]
-  console.log(page.type)
   $('#editPageDropDown').val(page.type)
   $('#editPageTitle').val(page.title)
   $('#editPageTextArea').val(page.textcontent)
   $('#pageId').val(page.id)
-  console.log('this is the stuff ', $('#pageId').val())
 }
 
 const showCreateBlogForm = function () {
