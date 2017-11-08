@@ -107,7 +107,7 @@ const signInNewUserSuccess = function (data) {
 
 const signOutSuccess = function () {
   reuse.hideMultipleFields(['#changePassword', '#signOut', '#signUpModal',
-    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage'])
+    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection'])
   reuse.showMultipleFields(['#signUpLink', '#messageContent', '#signInMessage', '#signInModal',
     '#get-sites', '#userSignedOut'])
   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage', '#userNameNav',
