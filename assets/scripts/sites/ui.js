@@ -7,6 +7,7 @@ const showPagesTemplate = require('../templates/showPage.handlebars')
 const showPageSuccessTemplate = require('../templates/showPageSuccess.handlebars')
 const showMySiteTemplate = require('../templates/mySite.handlebars')
 const showBlogsTemplate = require('../templates/manageBlogs.handlebars')
+const showMyPagesTemplate = require('../templates/managePages.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
@@ -28,6 +29,7 @@ const getUpdatedSiteSuccess = function (data) {
     $('#userSignedOut').hide()
     $('#signedIn').show()
     $('#userDashboard').show()
+    $('#dashboardLink').show()
   } else {
     // Have them create a site
     $('#userSignedOut').hide()
@@ -35,6 +37,7 @@ const getUpdatedSiteSuccess = function (data) {
     $('#createASite').show()
   }
 }
+
 const getUpdatedSiteFailure = function (error) {
   console.error(error)
 }
@@ -48,6 +51,7 @@ const viewSiteSuccess = function (site) {
   store.site = site
   const showSite = showSiteTemplate({ blogs: site.site.blogposts })
   const showPages = showPagesTemplate({ pages: site.site.pages })
+  $('#returnToSite').hide()
   $('#allSites').text('')
   $('#siteTitle').text(site.site.title)
   $('#siteDescription').text('')
@@ -65,6 +69,7 @@ const viewSiteFailure = function (error) {
 
 const showPageSuccess = function () {
   $('#blogs').hide()
+  $('#returnToSite').show()
   const page = store.page
   const showPage = showPageSuccessTemplate({ page: page })
   $('#allSites').text('')
@@ -77,6 +82,7 @@ const showMyPageSuccess = function () {
   const showPage = showPageSuccessTemplate({ page: page })
   $('#myBlogs').text('')
   $('#myBlogs').append(showPage)
+  $('#returnToMySite').show()
 }
 
 const showPageFailure = function (error) {
@@ -85,9 +91,9 @@ const showPageFailure = function (error) {
 
 const createSiteSuccess = function (data) {
   store.site = data.site
-  console.log(store.site)
   document.getElementById('create-a-site').reset()
   $('#createASiteMessage').text('')
+  $('#dashboardLink').show()
   $('#createASite').hide()
   $('#userDashboard').show()
 }
@@ -97,16 +103,39 @@ const createSiteFailure = function (error) {
   console.error(error)
 }
 
+// const addBlogPostSuccess = function () {
+//   document.getElementById('newBlogForm').reset()
+//   $('#createABlogMessage').text('')
+//   $('#newBlog').hide()
+// }
+
 const addBlogPostSuccess = function () {
-  document.getElementById('newBlogForm').reset()
-  $('#createABlogMessage').text('')
-  // hiding the form and bringing back updated blogs page
-  $('#newBlog').hide()
+  return new Promise((resolve, reject) => {
+    document.getElementById('newBlogForm').reset()
+    $('#createABlogMessage').text('')
+    $('#newBlog').hide()
+    resolve()
+  })
 }
 
 const addBlogPostFailure = function (error) {
   console.error(error)
   $('#createABlogMessage').text('Unexpected Error. Please try again.')
+}
+
+// const addPageSuccess = function () {
+//   document.getElementById('newPageForm').reset()
+//   // hiding the form and bringing back updated blogs page
+//   $('#newPage').hide()
+// }
+
+const addPageSuccess = function () {
+  return new Promise((resolve, reject) => {
+    document.getElementById('newPageForm').reset()
+    // hiding the form and bringing back updated blogs page
+    $('#newPage').hide()
+    resolve()
+  })
 }
 
 const showMySiteSuccess = function (data) {
@@ -117,6 +146,7 @@ const showMySiteSuccess = function (data) {
   const mySite = showMySiteTemplate({ site: site })
   const myPages = showPagesTemplate({ pages: pages })
   const myBlogs = showSiteTemplate({ blogs: blogs })
+  $('#returnToMySite').hide()
   $('#userDashboard').hide()
   $('#newBlog').hide()
   $('#newPage').hide()
@@ -133,11 +163,42 @@ const showMySiteSuccess = function (data) {
   $('#myBlogs').append(myBlogs)
 }
 
+// const editPageSuccess = function () {
+//   document.getElementById('editPageForm').reset()
+//   // hiding the form and bringing back updated blogs page
+//   $('#editPageSection').hide()
+// }
+
+const editPageSuccess = function () {
+  return new Promise((resolve, reject) => {
+    document.getElementById('editPageForm').reset()
+    // hiding the form and bringing back updated blogs page
+    $('#editPageSection').hide()
+    $('#edit-page-message').text('')
+    resolve()
+  })
+}
+
+const editPageFailure = function (error) {
+  console.error(error)
+  $('#edit-page-message').text('Unexpected Error. Please try again.')
+}
+
+// const editBlogPostSuccess = function () {
+//   document.getElementById('editBlogForm').reset()
+//   // hiding the form and bringing back updated blogs page
+//   $('#editABlogMessage').text('')
+//   $('#editBlogSection').hide()
+// }
+
 const editBlogPostSuccess = function () {
-  document.getElementById('editBlogForm').reset()
-  // hiding the form and bringing back updated blogs page
-  $('#editABlogMessage').text('')
-  $('#editBlogSection').hide()
+  return new Promise((resolve, reject) => {
+    document.getElementById('editBlogForm').reset()
+    // hiding the form and bringing back updated blogs page
+    $('#editABlogMessage').text('')
+    $('#editBlogSection').hide()
+    resolve()
+  })
 }
 
 const editBlogPostFailure = function (error) {
@@ -154,8 +215,32 @@ const manageBlog = function () {
   $('#mbDescription').text(store.site.description)
 }
 
+// const updateLocalSiteVar = function (data) {
+//   store.site = data.site
+// }
+
 const updateLocalSiteVar = function (data) {
-  store.site = data.site
+  return new Promise((resolve, reject) => {
+    store.site = data.site
+    resolve()
+  })
+}
+
+// const updateLocalSitePageVar = function (data) {
+//   const userSites = data.sites.filter((site) => {
+//     return site['_owner'] === store.user['_id']
+//   })
+//   store.site = userSites[0]
+// }
+
+const updateLocalSitePageVar = function (data) {
+  return new Promise((resolve, reject) => {
+    const userSites = data.sites.filter((site) => {
+      return site['_owner'] === store.user['_id']
+    })
+    store.site = userSites[0]
+    resolve()
+  })
 }
 
 const deleteBlogPostSuccess = function () {
@@ -170,15 +255,45 @@ const deleteBlogPostFailure = function (error) {
 const editSiteSuccess = function (data) {
   document.getElementById('editSiteForm').reset()
   store.site = data.site
+  $('#edit-site-failure').text('')
   $('#editASite').hide()
   $('#userDashboard').show()
+}
+
+const editSiteFailure = function (error) {
+  console.error(error)
+  $('#edit-site-failure').text('Unexpected Error. Please try again.')
 }
 
 const deleteSiteSuccess = function () {
   store.site = null
   $('#deleteSiteModal').modal('hide')
   $('#userDashboard').hide()
+  $('#dashboardLink').hide()
   $('#createASite').show()
+  $('#delete-site-failure').text('')
+}
+
+const deleteSiteFailure = function (error) {
+  console.error(error)
+  $('#delete-site-failure').text('Unexpected Error. Please try again.')
+}
+
+const managePages = function () {
+  const showMyPages = showMyPagesTemplate({ pages: store.site.pages })
+  $('#mPage').html(showMyPages)
+  $('#pageTitle').text(store.site.title)
+  $('#pageDescription').text(store.site.description)
+}
+
+const deletePageSuccess = function () {
+  $('#deletePageModal').modal('hide')
+  $('#delete-page-failure').text('')
+}
+
+const deletePageFailure = function (error) {
+  console.error(error)
+  $('#delete-page-failure').text('Unexpected Error. Please try again.')
 }
 
 module.exports = {
@@ -202,6 +317,15 @@ module.exports = {
   editSiteSuccess,
   deleteSiteSuccess,
   editBlogPostFailure,
+  editPageSuccess,
   deleteBlogPostSuccess,
-  deleteBlogPostFailure
+  deleteBlogPostFailure,
+  managePages,
+  addPageSuccess,
+  deletePageSuccess,
+  updateLocalSitePageVar,
+  editSiteFailure,
+  deleteSiteFailure,
+  editPageFailure,
+  deletePageFailure
 }

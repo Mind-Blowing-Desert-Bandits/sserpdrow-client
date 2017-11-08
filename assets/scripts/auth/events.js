@@ -4,7 +4,6 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
-const apiSites = require('../sites/api')
 const reuse = require('../reuse/reuse.js')
 
 const onSignUp = function (event) {
@@ -15,15 +14,11 @@ const onSignUp = function (event) {
     $('#messageContent').text('Password and password confirmation do not match.')
   } else {
     reuse.removeValMultipleTextFields(['#signUpEmail', '#signUpPassword', '#signUpPasswordConf'])
-    // $('#signUpEmail').val('')
-    // $('#signUpPassword').val('')
-    // $('#signUpPasswordConf').val('')
     api.signUp(data)
       .then(ui.signUpSuccess)
-      .catch(ui.signUpFailure)
       .then(() => api.signIn(dataSave))
       .then(ui.signInNewUserSuccess)
-      .catch(ui.signInFailure)
+      .catch(ui.signUpFailure)
   }
 }
 
@@ -32,8 +27,6 @@ const onSignIn = function (event) {
   event.preventDefault()
   $('#passwordChange').text('')
   reuse.removeValMultipleTextFields(['#signInEmail', '#signInPassword'])
-  // $('#signInEmail').val('')
-  // $('#signInPassword').val('')
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -44,12 +37,6 @@ const onSignUpLinkClick = function (event) {
   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage'])
   reuse.hideMultipleFields(['#sign-up', '#signInModal'])
   reuse.showMultipleFields(['#sign-in', '#signUpModal'])
-  // $('#sign-up').hide()
-  // $('#sign-in').show()
-  // $('#signInModal').hide()
-  // $('#signUpModal').show()
-  // $('#messageContent').text('')
-  // $('#signInMessage').text('')
 }
 
 const onSignOut = function (event) {
@@ -63,8 +50,6 @@ const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   reuse.removeValMultipleTextFields(['#changeOld', '#changeNew'])
-  // $('#changeOld').val('')
-  // $('#changeNew').val('')
   if (store.user === undefined || null) {
     $('#passwordChange').text('You must sign in before you can change your password.')
   } else if (data.passwords.old.length === 0) {

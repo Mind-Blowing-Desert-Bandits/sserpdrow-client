@@ -13,7 +13,7 @@ const signUpSuccess = function (data) {
 }
 
 const signUpFailure = function () {
-  $('#messageContent').text('This user may already exist. Please try again.')
+  $('#messageContent').text('Unexpected error. Please try again.')
 }
 
 const onSignInLinkClick = function (event) {
@@ -84,7 +84,7 @@ const signInFailure = function () {
 
 const signInNewUserSuccess = function (data) {
   reuse.hideMultipleFields(['#sign-up', '#signInAfterSignUp', '#sign-in',
-    '#signUpLink', '#signUpModal', '#signInMessage', '#userSignedOut', '#userSignedOut'])
+    '#signUpLink', '#signUpModal', '#signInMessage', '#userSignedOut', '#userSignedOut', '#get-sites'])
   reuse.showMultipleFields(['#signOut', '#changePassword', '#userNameNav', '#signedIn', '#createASite'])
   $('#messageContent').text('')
   // $('#sign-up').hide()
@@ -107,7 +107,7 @@ const signInNewUserSuccess = function (data) {
 
 const signOutSuccess = function () {
   reuse.hideMultipleFields(['#changePassword', '#signOut', '#signUpModal',
-    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog'])
+    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection', '#userDashboard', '#createASite', '#returnToSite', '#dashboardLink'])
   reuse.showMultipleFields(['#signUpLink', '#messageContent', '#signInMessage', '#signInModal',
     '#get-sites', '#userSignedOut'])
   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage', '#userNameNav',

@@ -11,7 +11,6 @@ const getSites = function () {
 }
 
 const getSite = function (thisID) {
-  console.log('thisID', thisID)
   return $.ajax({
     url: config.apiOrigin + '/sites/' + thisID
   })
@@ -35,9 +34,56 @@ const addBlogPost = function (data) {
     }
   }
 
-  console.log('api data is', data)
   return $.ajax({
     url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
+const deleteBlogPost = function (data) {
+  const updatedata = {
+    'site': {
+      'blogID': data
+    }
+  }
+  return $.ajax({
+    url: config.apiOrigin + '/deleteblogpost',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
+const addPage = function (data) {
+  const updatedata = {
+    'site': {
+      'pages': data
+    }
+  }
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
+const deletePageAPI = function (data) {
+  const updatedata = {
+    'site': {
+      'pageID': data
+    }
+  }
+  return $.ajax({
+    url: config.apiOrigin + '/deletepage',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -84,5 +130,8 @@ module.exports = {
   addBlogPost,
   getMySite,
   editSite,
-  deleteSite
+  deleteSite,
+  addPage,
+  deleteBlogPost,
+  deletePageAPI
 }
