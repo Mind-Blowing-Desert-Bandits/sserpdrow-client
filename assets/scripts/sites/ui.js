@@ -123,10 +123,19 @@ const addBlogPostFailure = function (error) {
   $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
 
+// const addPageSuccess = function () {
+//   document.getElementById('newPageForm').reset()
+//   // hiding the form and bringing back updated blogs page
+//   $('#newPage').hide()
+// }
+
 const addPageSuccess = function () {
-  document.getElementById('newPageForm').reset()
-  // hiding the form and bringing back updated blogs page
-  $('#newPage').hide()
+  return new Promise((resolve, reject) => {
+    document.getElementById('newPageForm').reset()
+    // hiding the form and bringing back updated blogs page
+    $('#newPage').hide()
+    resolve()
+  })
 }
 
 const showMySiteSuccess = function (data) {
@@ -193,11 +202,21 @@ const updateLocalSiteVar = function (data) {
   })
 }
 
+// const updateLocalSitePageVar = function (data) {
+//   const userSites = data.sites.filter((site) => {
+//     return site['_owner'] === store.user['_id']
+//   })
+//   store.site = userSites[0]
+// }
+
 const updateLocalSitePageVar = function (data) {
-  const userSites = data.sites.filter((site) => {
-    return site['_owner'] === store.user['_id']
+  return new Promise((resolve, reject) => {
+    const userSites = data.sites.filter((site) => {
+      return site['_owner'] === store.user['_id']
+    })
+    store.site = userSites[0]
+    resolve()
   })
-  store.site = userSites[0]
 }
 
 const deleteBlogPostSuccess = function () {
