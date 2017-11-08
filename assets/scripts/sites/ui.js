@@ -84,6 +84,7 @@ const showPageFailure = function () {
 const createSiteSuccess = function (data) {
   store.site = data.site
   console.log(store.site)
+  document.getElementById('create-a-site').reset()
   $('#createASite').hide()
   $('#userDashboard').show()
 }
@@ -160,6 +161,13 @@ const editSiteSuccess = function (data) {
   $('#userDashboard').show()
 }
 
+const deleteSiteSuccess = function () {
+  store.site = null
+  $('#deleteSiteModal').modal('hide')
+  $('#userDashboard').hide()
+  $('#createASite').show()
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -178,5 +186,6 @@ module.exports = {
   updateLocalSiteVar,
   editBlogPostSuccess,
   deleteBlogPostSuccess,
-  editSiteSuccess
+  editSiteSuccess,
+  deleteSiteSuccess
 }

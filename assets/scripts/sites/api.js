@@ -66,11 +66,22 @@ const editSite = function (data) {
   })
 }
 
+const deleteSite = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   getSites,
   getSite,
   createSite,
   addBlogPost,
   getMySite,
-  editSite
+  editSite,
+  deleteSite
 }

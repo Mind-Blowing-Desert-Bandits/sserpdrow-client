@@ -238,6 +238,12 @@ const closeDeleteSiteModal = function () {
   $('#deleteSiteModal').modal('hide')
 }
 
+const deleteSite = function (event) {
+  event.preventDefault()
+  api.deleteSite()
+    .then(ui.deleteSiteSuccess)
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -257,6 +263,7 @@ const siteHandlers = function () {
   $('#editSiteDropdown').on('click', showEditSiteForm)
   $('#deleteSiteDropdown').on('click', showDeleteSiteModal)
   $('#noDeleteSite').on('click', closeDeleteSiteModal)
+  $('#yesDeleteSite').on('click', deleteSite)
 }
 
 module.exports = {
