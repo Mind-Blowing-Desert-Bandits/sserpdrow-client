@@ -46,6 +46,23 @@ const addBlogPost = function (data) {
   })
 }
 
+const deleteBlogPost = function (data) {
+  const updatedata = {
+    'site': {
+      'blogID': data
+    }
+  }
+  console.log('api data is', data)
+  return $.ajax({
+    url: config.apiOrigin + '/deleteblogpost',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
 const addPage = function (data) {
   const updatedata = {
     'site': {
@@ -54,6 +71,23 @@ const addPage = function (data) {
   }
   return $.ajax({
     url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
+const deletePageAPI = function (data) {
+  const updatedata = {
+    'site': {
+      'pageID': data
+    }
+  }
+  console.log('api data is', data)
+  return $.ajax({
+    url: config.apiOrigin + '/deletepage',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -101,5 +135,7 @@ module.exports = {
   getMySite,
   editSite,
   deleteSite,
-  addPage
+  addPage,
+  deleteBlogPost,
+  deletePageAPI
 }

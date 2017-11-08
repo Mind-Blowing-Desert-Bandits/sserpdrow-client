@@ -91,6 +91,7 @@ const createSiteSuccess = function (data) {
   console.log(store.site)
   document.getElementById('create-a-site').reset()
   $('#createASiteMessage').text('')
+  $('#dashboardLink').show()
   $('#createASite').hide()
   $('#userDashboard').show()
 }
@@ -201,6 +202,7 @@ const deleteSiteSuccess = function () {
   store.site = null
   $('#deleteSiteModal').modal('hide')
   $('#userDashboard').hide()
+  $('#dashboardLink').hide()
   $('#createASite').show()
 }
 

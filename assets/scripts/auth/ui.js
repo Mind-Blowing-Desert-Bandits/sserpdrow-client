@@ -54,7 +54,7 @@ const signInSuccess = function (data) {
   reuse.hideMultipleFields(['#sign-up', '#signInAfterSignUp', '#sign-in',
     '#signUpLink', '#signUpModal', '#get-sites', '#mySite',
     '#myPages', '#myBlogs', '#mySiteHeader'])
-  reuse.showMultipleFields(['#signInMessage', '#signOut', '#changePassword', '#userNameNav'])
+  reuse.showMultipleFields(['#signInMessage', '#signOut', '#changePassword', '#userNameNav', '#dashboardLink'])
   $('#messageContent').text('')
   // $('#sign-up').hide()
   // $('#signInAfterSignUp').hide()
@@ -107,7 +107,7 @@ const signInNewUserSuccess = function (data) {
 
 const signOutSuccess = function () {
   reuse.hideMultipleFields(['#changePassword', '#signOut', '#signUpModal',
-    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection', '#userDashboard', '#createASite', '#returnToSite'])
+    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection', '#userDashboard', '#createASite', '#returnToSite', '#dashboardLink'])
   reuse.showMultipleFields(['#signUpLink', '#messageContent', '#signInMessage', '#signInModal',
     '#get-sites', '#userSignedOut'])
   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage', '#userNameNav',

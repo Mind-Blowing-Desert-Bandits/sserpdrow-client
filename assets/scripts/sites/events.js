@@ -212,10 +212,7 @@ const editBlogContent = function (event) {
 const deleteBlog = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  store.site.blogposts = store.site.blogposts.filter((blog) => {
-    return blog.id !== data.blogposts.id
-  })
-  api.addBlogPost(store.site.blogposts)
+  api.deleteBlogPost(data.blogposts.id)
     .catch(ui.deleteBlogPostFailure)
     .then(promiseGetSite)
     .catch(ui.deleteBlogPostFailure)
@@ -322,11 +319,7 @@ const editPageContent = function (event) {
 const deletePage = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data.pages.id)
-  store.site.pages = store.site.pages.filter((page) => {
-    return page.id !== data.pages.id
-  })
-  api.addPage(store.site.pages)
+  api.deletePageAPI(data.pages.id)
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)
     .catch(console.error)
@@ -337,6 +330,23 @@ const deletePage = function (event) {
 const returnToSite = function (event) {
   event.preventDefault()
   ui.viewSiteSuccess(store.site)
+}
+
+const myDashboard = function () {
+  $('#userDashboard').show()
+  $('#mySite').hide()
+  $('#manageBlogSection').hide()
+  $('#newBlog').hide()
+  document.getElementById('newBlogForm').reset()
+  $('#editBlogSection').hide()
+  document.getElementById('editBlogForm').reset()
+  $('#managePagesSection').hide()
+  $('#newPage').hide()
+  document.getElementById('newPageForm').reset()
+  $('#editPageSection').hide()
+  document.getElementById('editPageForm').reset()
+  $('#editASite').hide()
+  document.getElementById('editSiteForm').reset()
 }
 
 const siteHandlers = function () {
@@ -365,6 +375,7 @@ const siteHandlers = function () {
   $('#createPageButton').on('click', showCreatePageForm)
   $('#yesDeletePageForm').on('submit', deletePage)
   $('#returnToSite').on('click', returnToSite)
+  $('#dashboardLink').on('click', myDashboard)
 }
 
 module.exports = {
