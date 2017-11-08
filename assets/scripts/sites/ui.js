@@ -156,6 +156,8 @@ const deleteBlogPostSuccess = function () {
 const editSiteSuccess = function (data) {
   document.getElementById('editSiteForm').reset()
   store.site = data.site
+  $('#editASite').hide()
+  $('#userDashboard').show()
 }
 
 module.exports = {
