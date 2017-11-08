@@ -7,8 +7,8 @@ const reuse = require('../reuse/reuse.js')
 const signUpSuccess = function (data) {
   $('#messageContent').text('You have signed up as ' + data.user.email)
   $('#signInMessage').text('')
-  $('#signInModal').hide()
-  // $('#signInModal').modal('hide')
+  // $('#signInModal').hide()
+  $('#signInModal').modal('hide')
   $('#createASite').show()
 }
 
@@ -52,7 +52,7 @@ const onSignUpModalLinkClink = function (event) {
 
 const signInSuccess = function (data) {
   reuse.hideMultipleFields(['#sign-up', '#signInAfterSignUp', '#sign-in',
-    '#signUpLink', '#signUpModal', '#exampleModal', '#get-sites', '#mySite',
+    '#signUpLink', '#signUpModal', '#get-sites', '#mySite',
     '#myPages', '#myBlogs', '#mySiteHeader'])
   reuse.showMultipleFields(['#signInMessage', '#signOut', '#changePassword', '#userNameNav'])
   $('#messageContent').text('')
@@ -65,7 +65,7 @@ const signInSuccess = function (data) {
   // $('#signOut').show()
   // $('#changePassword').show()
   // $('#signUpModal').hide()
-  // $('#exampleModal').modal('hide')
+  $('#exampleModal').modal('hide')
   // $('#userNameNav').show()
   // $('#get-sites').hide()
   // $('#mySite').hide()
