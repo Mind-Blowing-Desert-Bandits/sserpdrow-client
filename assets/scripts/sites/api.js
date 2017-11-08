@@ -11,6 +11,7 @@ const getSites = function () {
 }
 
 const getSite = function (thisID) {
+  console.log('thisID', thisID)
   return $.ajax({
     url: config.apiOrigin + '/sites/' + thisID
   })

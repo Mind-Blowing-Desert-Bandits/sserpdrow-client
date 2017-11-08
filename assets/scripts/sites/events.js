@@ -5,6 +5,10 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store.js')
 
+const promiseGetSite = function () {
+  return api.getSite(store.site.id)
+}
+
 const onGetSites = function (event) {
   event.preventDefault()
   $('#allSites').text('')
@@ -22,7 +26,6 @@ const viewSite = function (event) {
   event.preventDefault()
   const site = event.target
   const siteId = site.parentNode.parentNode
-  console.log('this is site id ', siteId)
   const thisSiteID = siteId.getAttribute('data-id')
   api.getSite(thisSiteID)
     .then(ui.viewSiteSuccess)
@@ -62,11 +65,9 @@ const newBlogPost = function (event) {
     textcontent: data.blogposts.textcontent
   }
   store.site.blogposts.push(newBlog)
-  console.log(store.site.blogposts)
-  console.log(store.site)
   api.addBlogPost(store.site.blogposts)
     .then(ui.addBlogPostSuccess)
-    .then(api.getSites)
+    .then(promiseGetSite)
     .then(ui.updateLocalSiteVar)
     .catch(console.error)
     .then(manageBlog)
@@ -101,7 +102,6 @@ const viewMyPage = function (event) {
   const pageId = page.parentNode
   const pageParent = pageId.parentNode
   const thisID = pageParent.getAttribute('data-id')
-  console.log('page id is ', thisID)
   for (let i = 0; i < store.mySite.site.pages.length; i++) {
     if (store.mySite.site.pages[i].id === thisID) {
       store.myPage = store.mySite.site.pages[i]
@@ -111,7 +111,6 @@ const viewMyPage = function (event) {
 }
 
 const manageBlog = function () {
-  console.log('mange blog worked')
   // Hide dashboard
   $('#userDashboard').hide()
   ui.manageBlog()
@@ -134,13 +133,9 @@ const dataIdFilter = function (dataId) {
   const blogpost = store.site.blogposts.filter((blog) => {
     return blog.id === dataId
   })[0]
-  console.log(blogpost)
-  console.log(blogpost.textcontent)
-  console.log(blogpost.title)
   $('#editBlogTextArea').val(blogpost.textcontent)
   $('#editBlogTitle').val(blogpost.title)
   $('#blogId').val(blogpost.id)
-  console.log($('#blogId').val())
 }
 
 const showCreateBlogForm = function () {
@@ -163,23 +158,20 @@ const cancelEditBlog = function () {
 const showEditBlogForm = function () {
   $('#manageBlogSection').hide()
   $('#editBlogSection').show()
-  console.log('edit button works')
 }
 
 const editBlogContent = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   store.site.blogposts.forEach((blog, index) => {
-    console.log(blog, index)
     if (blog.id === data.blogposts.id) {
       store.site.blogposts[index].title = data.blogposts.title
       store.site.blogposts[index].textcontent = data.blogposts.textcontent
     }
   })
-  console.log(store.site.blogposts)
   api.addBlogPost(store.site.blogposts)
     .then(ui.editBlogPostSuccess)
-    .then(api.getSites)
+    .then(promiseGetSite)
     .then(ui.updateLocalSiteVar)
     .catch(console.error)
     .then(manageBlog)
@@ -188,12 +180,11 @@ const editBlogContent = function (event) {
 const deleteBlog = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data.blogposts.id)
   store.site.blogposts = store.site.blogposts.filter((blog) => {
     return blog.id !== data.blogposts.id
   })
   api.addBlogPost(store.site.blogposts)
-    .then(api.getSites)
+    .then(promiseGetSite)
     .then(ui.updateLocalSiteVar)
     .catch(console.error)
     .then(manageBlog)
