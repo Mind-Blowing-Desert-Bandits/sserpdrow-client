@@ -116,6 +116,8 @@ const signOutSuccess = function () {
   $('#sitePages').text('')
   $('#editASite').hide()
   $('#manageBlogSection').hide()
+  $('#newBlog').hide()
+  document.getElementById('newBlogForm').reset()
 }
 
 const signOutFailure = function () {
