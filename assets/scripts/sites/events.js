@@ -229,8 +229,6 @@ const showEditSiteForm = function () {
   $('#userDashboard').hide()
   $('#siteTitleInput').val(store.site.title)
   $('#siteDescriptionInput').val(store.site.description)
-  console.log($('#siteTitleInput').val())
-  console.log($('#siteDescriptionInput').val())
 }
 
 const cancelEditSite = function () {
@@ -242,12 +240,10 @@ const cancelEditSite = function () {
 const editSite = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data.site.title)
   api.editSite(data)
     .then(api.getMySite)
     .then(ui.editSiteSuccess)
     .catch(console.error)
-    .then(console.log)
 }
 
 const showDeleteSiteModal = function () {
@@ -298,32 +294,29 @@ const editPageContent = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   store.site.pages.forEach((page, index) => {
-    console.log('pages.type', page.type)
     if (page.id === data.pages.id) {
       store.site.pages[index].type = data.pages.type
       store.site.pages[index].title = data.pages.title
       store.site.pages[index].textcontent = data.pages.textcontent
     }
   })
-  console.log('this is store.site.pages ', store.site.pages)
   api.addPage(store.site.pages)
     .then(ui.editPageSuccess)
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)
-    .catch(console.error)
     .then(managePages)
+    .catch(console.error)
 }
 
 const deletePage = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log('data is ', data)
   api.deletePageAPI(data.pages.id)
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)
-    .catch(console.error)
     .then(managePages)
     .then(ui.deletePageSuccess)
+    .catch(console.error)
 }
 
 const returnToSite = function (event) {

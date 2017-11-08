@@ -163,11 +163,19 @@ const showMySiteSuccess = function (data) {
   $('#myBlogs').append(myBlogs)
 }
 
+// const editPageSuccess = function () {
+//   document.getElementById('editPageForm').reset()
+//   // hiding the form and bringing back updated blogs page
+//   $('#editPageSection').hide()
+// }
+
 const editPageSuccess = function () {
-  console.log('ui success')
-  document.getElementById('editPageForm').reset()
-  // hiding the form and bringing back updated blogs page
-  $('#editPageSection').hide()
+  return new Promise((resolve, reject) => {
+    document.getElementById('editPageForm').reset()
+    // hiding the form and bringing back updated blogs page
+    $('#editPageSection').hide()
+    resolve()
+  })
 }
 
 // const editBlogPostSuccess = function () {
