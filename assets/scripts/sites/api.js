@@ -46,6 +46,23 @@ const addBlogPost = function (data) {
   })
 }
 
+const deleteBlogPost = function (data) {
+  const updatedata = {
+    'site': {
+      'blogID': data
+    }
+  }
+  console.log('api data is', data)
+  return $.ajax({
+    url: config.apiOrigin + '/deleteblogpost',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
 const addPage = function (data) {
   const updatedata = {
     'site': {
@@ -101,5 +118,6 @@ module.exports = {
   getMySite,
   editSite,
   deleteSite,
-  addPage
+  addPage,
+  deleteBlogPost
 }

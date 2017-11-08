@@ -211,10 +211,7 @@ const editBlogContent = function (event) {
 const deleteBlog = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  store.site.blogposts = store.site.blogposts.filter((blog) => {
-    return blog.id !== data.blogposts.id
-  })
-  api.addBlogPost(store.site.blogposts)
+  api.deleteBlogPost(data.blogposts.id)
     .catch(ui.deleteBlogPostFailure)
     .then(promiseGetSite)
     .catch(ui.deleteBlogPostFailure)
