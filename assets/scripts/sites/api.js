@@ -55,10 +55,22 @@ const getMySite = function () {
   })
 }
 
+const editSite = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   getSites,
   getSite,
   createSite,
   addBlogPost,
-  getMySite
+  getMySite,
+  editSite
 }

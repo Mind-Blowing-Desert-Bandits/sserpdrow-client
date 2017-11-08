@@ -223,6 +223,8 @@ const editSite = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data.site.title)
+  api.editSite(data)
+    .then(console.log)
 }
 
 const siteHandlers = function () {
