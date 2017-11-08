@@ -247,10 +247,19 @@
             <img class="img-circle" src="https://images.unsplash.com/photo-1476081718509-d5d0b661a376?auto=format&fit=crop&w=1833&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="Generic placeholder image" width="140" height="140">
             <h3>Manage the Site</h3>
             <p>Change your Site Name and Description. Manage your Account</p>
-              <button type="button" value="manageSite" id="manageSite" class="btn btn-primary">Submit</button>
+              <!-- <button type="button" value="manageSiteOptions" id="manageSite" class="btn btn-primary">Submit</button> -->
+              <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Site Management Options
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item btn btn-primary" id='editSiteDropdown' type="button">Edit Site Details</button>
+            <br>
+            <button class="dropdown-item btn btn-danger" id='deleteSiteDropdown' type="button">Delete Your Site </button>
           </div>
         </div>
-
+          </div>
+        </div>
       </div>
     </section>
 
