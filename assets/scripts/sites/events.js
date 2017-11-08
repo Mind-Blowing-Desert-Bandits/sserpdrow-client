@@ -222,6 +222,7 @@ const deleteBlog = function (event) {
 const closeDeleteModal = function () {
   $('#deleteModal').modal('hide')
   $('#deletePageModal').modal('hide')
+  $('#delete-page-failure').text('')
 }
 
 const showEditSiteForm = function () {
@@ -374,6 +375,9 @@ const siteHandlers = function () {
   $('#returnToSite').on('click', returnToSite)
   $('#dashboardLink').on('click', myDashboard)
   $('#returnToMySite').on('click', returnToMySite)
+  $(document).click(function () {
+    $('.navbar-collapse').collapse('hide')
+  })
 }
 
 module.exports = {
