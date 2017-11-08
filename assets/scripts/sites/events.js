@@ -77,9 +77,15 @@ const newBlogPost = function (event) {
 
 const newPage = function (event) {
   event.preventDefault()
-  console.log(this)
   const data = getFormFields(this)
-  console.log(data)
+  const newPageObject = {
+    type: data.pages.type,
+    title: data.pages.title,
+    textcontent: data.pages.textcontent
+  }
+  store.site.pages.push(newPageObject)
+  api.addPage(store.site.pages)
+    .then(ui.addPageSuccess)
 }
 
 const getUpdatedSiteByUser = function () {

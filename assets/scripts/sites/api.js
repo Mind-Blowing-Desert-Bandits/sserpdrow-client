@@ -46,6 +46,22 @@ const addBlogPost = function (data) {
   })
 }
 
+const addPage = function (data) {
+  const updatedata = {
+    'site': {
+      'pages': data
+    }
+  }
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
 const getMySite = function () {
   return $.ajax({
     url: config.apiOrigin + '/sites/' + store.site.id,
@@ -84,5 +100,6 @@ module.exports = {
   addBlogPost,
   getMySite,
   editSite,
-  deleteSite
+  deleteSite,
+  addPage
 }
