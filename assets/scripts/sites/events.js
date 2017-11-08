@@ -154,11 +154,8 @@ const dataPageIdFilter = function (dataId) {
   const page = store.site.pages.filter((page) => {
     return page.id === dataId
   })[0]
-  // console.log('this is page ', page)
-  // console.log(page.textcontent)
-  // console.log(page.title)
   console.log(page.type)
-  $('#pageDropDown').val(page.type)
+  $('#editPageDropDown').val(page.type)
   $('#editPageTitle').val(page.title)
   $('#editPageTextArea').val(page.textcontent)
   $('#pageId').val(page.id)
