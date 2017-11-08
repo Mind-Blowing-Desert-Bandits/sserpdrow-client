@@ -106,7 +106,8 @@ const signInNewUserSuccess = function (data) {
 }
 
 const signOutSuccess = function () {
-  reuse.hideMultipleFields(['#changePassword', '#signOut', '#signUpModal', '#signedIn'])
+  reuse.hideMultipleFields(['#changePassword', '#signOut', '#signUpModal',
+    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog'])
   reuse.showMultipleFields(['#signUpLink', '#messageContent', '#signInMessage', '#signInModal',
     '#get-sites', '#userSignedOut'])
   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage', '#userNameNav',
@@ -114,27 +115,27 @@ const signOutSuccess = function () {
 
   store.user = null
   store.site = null
-  $('#changePassword').hide()
-  $('#signOut').hide()
-  $('#signUpLink').show()
-  $('#messageContent').text('')
-  $('#signInMessage').text('')
-  $('#messageContent').show()
-  $('#signInMessage').show()
-  $('#signUpModal').hide()
-  $('#signInModal').show()
-  $('#get-sites').show()
-  $('#signedIn').hide()
-  $('#userSignedOut').show()
+  // $('#changePassword').hide()
+  // $('#signOut').hide()
+  // $('#signUpLink').show()
+  // $('#messageContent').text('')
+  // $('#signInMessage').text('')
+  // $('#messageContent').show()
+  // $('#signInMessage').show()
+  // $('#signUpModal').hide()
+  // $('#signInModal').show()
+  // $('#get-sites').show()
+  // $('#signedIn').hide()
+  // $('#userSignedOut').show()
   // $('#userNameNav').text('')
   $('#siteTitle').text('SSERPDROW')
   $('#siteDescription').text('Welcome to SSERPDROW! To view our communities\' sites please click \'View All Sites\' link above. To create your own site/blogs please sign-up or sign-in!')
   // $('#blogs').text('')
   // $('#allSites').text('')
   // $('#sitePages').text('')
-  $('#editASite').hide()
-  $('#manageBlogSection').hide()
-  $('#newBlog').hide()
+  // $('#editASite').hide()
+  // $('#manageBlogSection').hide()
+  // $('#newBlog').hide()
   document.getElementById('newBlogForm').reset()
 }
 
