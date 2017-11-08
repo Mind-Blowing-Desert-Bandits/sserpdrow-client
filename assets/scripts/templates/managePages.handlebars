@@ -1,0 +1,28 @@
+{{#each pages as |page|}}
+  <br>
+  <div class="panel panel-info" data-id="{{page.id}}">
+    {{#if page.title}}
+      <div class="panel-heading">{{page.title}}</div>
+    {{else}}
+      <div class="panel-heading">No Title</div>
+    {{/if}}
+    <div class="panel-body">
+      {{page.textcontent}}
+      <br>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class=“btn-group” role=“group” aria-label=“...“>
+            <button type=“button” class="btn btn-primary editPage">Edit</button>
+            <button type=“button” class="btn btn-danger deletePage">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- new Date.toISOString().split(‘T’)[0] -->
+{{/each}}

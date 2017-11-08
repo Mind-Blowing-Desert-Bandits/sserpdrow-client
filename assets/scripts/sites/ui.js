@@ -7,6 +7,7 @@ const showPagesTemplate = require('../templates/showPage.handlebars')
 const showPageSuccessTemplate = require('../templates/showPageSuccess.handlebars')
 const showMySiteTemplate = require('../templates/mySite.handlebars')
 const showBlogsTemplate = require('../templates/manageBlogs.handlebars')
+const showMyPagesTemplate = require('../templates/managePages.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
@@ -108,6 +109,12 @@ const addBlogPostFailure = function (error) {
   console.error(error)
   $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
+const addPageSuccess = function () {
+  console.log('ui success')
+  document.getElementById('newPageForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#newPage').hide()
+}
 
 const showMySiteSuccess = function (data) {
   store.mySite = data
@@ -131,6 +138,13 @@ const showMySiteSuccess = function (data) {
   $('#myPages').append(myPages)
   $('#myBlogs').text('')
   $('#myBlogs').append(myBlogs)
+}
+
+const editPageSuccess = function () {
+  console.log('ui success')
+  document.getElementById('editPageForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#editPageSection').hide()
 }
 
 const editBlogPostSuccess = function () {
@@ -181,6 +195,17 @@ const deleteSiteSuccess = function () {
   $('#createASite').show()
 }
 
+const managePages = function () {
+  const showMyPages = showMyPagesTemplate({ pages: store.site.pages })
+  $('#mPage').html(showMyPages)
+  $('#pageTitle').text(store.site.title)
+  $('#pageDescription').text(store.site.description)
+}
+
+const deletePageSuccess = function () {
+  $('#deletePageModal').modal('hide')
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -202,6 +227,10 @@ module.exports = {
   editSiteSuccess,
   deleteSiteSuccess,
   editBlogPostFailure,
+  editPageSuccess,
   deleteBlogPostSuccess,
-  deleteBlogPostFailure
+  deleteBlogPostFailure,
+  managePages,
+  addPageSuccess,
+  deletePageSuccess
 }

@@ -77,9 +77,19 @@ const newBlogPost = function (event) {
 
 const newPage = function (event) {
   event.preventDefault()
-  console.log(this)
   const data = getFormFields(this)
-  console.log(data)
+  const newPageObject = {
+    type: data.pages.type,
+    title: data.pages.title,
+    textcontent: data.pages.textcontent
+  }
+  store.site.pages.push(newPageObject)
+  api.addPage(store.site.pages)
+    .then(ui.addPageSuccess)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(managePages)
 }
 
 const getUpdatedSiteByUser = function () {
@@ -140,6 +150,18 @@ const dataIdFilter = function (dataId) {
   $('#blogId').val(blogpost.id)
 }
 
+const dataPageIdFilter = function (dataId) {
+  const page = store.site.pages.filter((page) => {
+    return page.id === dataId
+  })[0]
+  console.log(page.type)
+  $('#editPageDropDown').val(page.type)
+  $('#editPageTitle').val(page.title)
+  $('#editPageTextArea').val(page.textcontent)
+  $('#pageId').val(page.id)
+  console.log('this is the stuff ', $('#pageId').val())
+}
+
 const showCreateBlogForm = function () {
   $('#newBlog').show()
   $('#manageBlogSection').hide()
@@ -155,6 +177,12 @@ const cancelEditBlog = function () {
   $('#editBlogSection').hide()
   $('#manageBlogSection').show()
   document.getElementById('editBlogForm').reset()
+}
+
+const cancelEditPage = function () {
+  $('#editPageSection').hide()
+  $('#managePagesSection').show()
+  document.getElementById('editPageForm').reset()
 }
 
 const showEditBlogForm = function () {
@@ -197,6 +225,7 @@ const deleteBlog = function (event) {
 
 const closeDeleteModal = function () {
   $('#deleteModal').modal('hide')
+  $('#deletePageModal').modal('hide')
 }
 
 const showEditSiteForm = function () {
@@ -240,6 +269,70 @@ const deleteSite = function (event) {
     .catch(console.error)
 }
 
+const managePages = function () {
+  // Hide dashboard
+  $('#userDashboard').hide()
+  ui.managePages()
+  $('.editPage').on('click', function (event) {
+    const div = $(this).parents()[4]
+    const dataId = $(div).attr('data-id')
+    showEditPageForm()
+    dataPageIdFilter(dataId)
+  })
+  $('.deletePage').on('click', function (event) {
+    const div = $(this).parents()[4]
+    const dataId = $(div).attr('data-id')
+    $('#deletePageId').val(dataId)
+    $('#deletePageModal').modal('show')
+  })
+  $('#managePagesSection').show()
+}
+
+const showCreatePageForm = function () {
+  $('#newPage').show()
+  $('#managePagesSection').hide()
+}
+
+const showEditPageForm = function () {
+  $('#managePagesSection').hide()
+  $('#editPageSection').show()
+}
+
+const editPageContent = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  store.site.pages.forEach((page, index) => {
+    console.log('pages.type', page.type)
+    if (page.id === data.pages.id) {
+      store.site.pages[index].type = data.pages.type
+      store.site.pages[index].title = data.pages.title
+      store.site.pages[index].textcontent = data.pages.textcontent
+    }
+  })
+  console.log('this is store.site.pages ', store.site.pages)
+  api.addPage(store.site.pages)
+    .then(ui.editPageSuccess)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(managePages)
+}
+
+const deletePage = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data.pages.id)
+  store.site.pages = store.site.pages.filter((page) => {
+    return page.id !== data.pages.id
+  })
+  api.addPage(store.site.pages)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(managePages)
+    .then(ui.deletePageSuccess)
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -250,7 +343,9 @@ const siteHandlers = function () {
   $('#createBlogButton').on('click', showCreateBlogForm)
   $('#cancelNewBlogButton').on('click', cancelNewBlog)
   $('#cancelEditBlogButton').on('click', cancelEditBlog)
+  $('#cancelEditPageButton').on('click', cancelEditPage)
   $('#editBlogForm').on('submit', editBlogContent)
+  $('#editPageForm').on('submit', editPageContent)
   $('.noDelete').on('click', closeDeleteModal)
   $('#yesDeleteForm').on('submit', deleteBlog)
   $('#manageSite').on('click', showEditSiteForm)
@@ -260,6 +355,9 @@ const siteHandlers = function () {
   $('#deleteSiteDropdown').on('click', showDeleteSiteModal)
   $('#noDeleteSite').on('click', closeDeleteSiteModal)
   $('#yesDeleteSite').on('click', deleteSite)
+  $('#managePages').on('click', managePages)
+  $('#createPageButton').on('click', showCreatePageForm)
+  $('#yesDeletePageForm').on('submit', deletePage)
 }
 
 module.exports = {
