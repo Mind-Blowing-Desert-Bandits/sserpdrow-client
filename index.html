@@ -57,6 +57,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title">Are you sure you want to delete this post?</h3>
+            <div id="deleteABlogMessage"></div>
           </div>
           <div class="modal-footer">
             <form id="yesDeleteForm">
@@ -283,6 +284,7 @@
       <div class="container">
         <form id="newBlogForm" class="form-horizontal">
           <legend>Create your blog </legend>
+          <div id="createABlogMessage"></div>
           <div class="form-group">
             <div class="col-sm-3">
               <input type="text" class="form-control" name="blogposts[title]" placeholder="Blog Title" autocomplete="no" required>
@@ -367,6 +369,7 @@
       <div class="container">
         <form id="editBlogForm" class="form-horizontal">
           <legend>Edit your blog </legend>
+          <div id="editABlogMessage"></div>
           <div class="form-group">
             <div class="col-sm-3">
               <input type="text" id="editBlogTitle" class="form-control" name="blogposts[title]" placeholder="Blog Title" autocomplete="no" required>

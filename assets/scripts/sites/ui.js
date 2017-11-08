@@ -99,8 +99,14 @@ const createSiteFailure = function (error) {
 
 const addBlogPostSuccess = function () {
   document.getElementById('newBlogForm').reset()
+  $('#createABlogMessage').text('')
   // hiding the form and bringing back updated blogs page
   $('#newBlog').hide()
+}
+
+const addBlogPostFailure = function (error) {
+  console.error(error)
+  $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
 
 const showMySiteSuccess = function (data) {
@@ -130,7 +136,13 @@ const showMySiteSuccess = function (data) {
 const editBlogPostSuccess = function () {
   document.getElementById('editBlogForm').reset()
   // hiding the form and bringing back updated blogs page
+  $('#editABlogMessage').text('')
   $('#editBlogSection').hide()
+}
+
+const editBlogPostFailure = function (error) {
+  console.error(error)
+  $('#editABlogMessage').text('Unexpected Error. Please try again.')
 }
 
 const manageBlog = function () {
@@ -148,6 +160,11 @@ const updateLocalSiteVar = function (data) {
 
 const deleteBlogPostSuccess = function () {
   $('#deleteModal').modal('hide')
+  $('#deleteABlogMessage').text('')
+}
+const deleteBlogPostFailure = function (error) {
+  console.error(error)
+  $('#deleteABlogMessage').text('Unexpected Error. Please try again.')
 }
 
 const editSiteSuccess = function (data) {
@@ -176,12 +193,15 @@ module.exports = {
   getUpdatedSiteSuccess,
   getUpdatedSiteFailure,
   addBlogPostSuccess,
+  addBlogPostFailure,
   showMySiteSuccess,
   showMyPageSuccess,
   manageBlog,
   updateLocalSiteVar,
   editBlogPostSuccess,
-  deleteBlogPostSuccess,
   editSiteSuccess,
-  deleteSiteSuccess
+  deleteSiteSuccess,
+  editBlogPostFailure,
+  deleteBlogPostSuccess,
+  deleteBlogPostFailure
 }

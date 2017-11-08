@@ -67,7 +67,9 @@ const newBlogPost = function (event) {
   store.site.blogposts.push(newBlog)
   api.addBlogPost(store.site.blogposts)
     .then(ui.addBlogPostSuccess)
+    .catch(ui.addBlogPostFailure)
     .then(promiseGetSite)
+    .catch(ui.addBlogPostFailure)
     .then(ui.updateLocalSiteVar)
     .catch(console.error)
     .then(manageBlog)
@@ -171,9 +173,10 @@ const editBlogContent = function (event) {
   })
   api.addBlogPost(store.site.blogposts)
     .then(ui.editBlogPostSuccess)
+    .catch(ui.editBlogPostFailure)
     .then(promiseGetSite)
+    .catch(ui.editBlogPostFailure)
     .then(ui.updateLocalSiteVar)
-    .catch(console.error)
     .then(manageBlog)
 }
 
@@ -184,9 +187,10 @@ const deleteBlog = function (event) {
     return blog.id !== data.blogposts.id
   })
   api.addBlogPost(store.site.blogposts)
+    .catch(ui.deleteBlogPostFailure)
     .then(promiseGetSite)
+    .catch(ui.deleteBlogPostFailure)
     .then(ui.updateLocalSiteVar)
-    .catch(console.error)
     .then(manageBlog)
     .then(ui.deleteBlogPostSuccess)
 }
