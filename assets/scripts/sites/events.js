@@ -221,7 +221,8 @@ const cancelEditSite = function () {
 
 const editSite = function (event) {
   event.preventDefault()
-  console.log('worked')
+  const data = getFormFields(this)
+  console.log(data.site.title)
 }
 
 const siteHandlers = function () {
@@ -239,7 +240,7 @@ const siteHandlers = function () {
   $('#yesDeleteForm').on('submit', deleteBlog)
   $('#manageSite').on('click', showEditSiteForm)
   $('#cancelEditSiteTitleButton').on('click', cancelEditSite)
-  $('#editASite').on('submit', editSite)
+  $('#editSiteForm').on('submit', editSite)
 }
 
 module.exports = {
