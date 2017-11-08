@@ -84,7 +84,7 @@ const signInFailure = function () {
 
 const signInNewUserSuccess = function (data) {
   reuse.hideMultipleFields(['#sign-up', '#signInAfterSignUp', '#sign-in',
-    '#signUpLink', '#signUpModal', '#signInMessage', '#userSignedOut', '#userSignedOut'])
+    '#signUpLink', '#signUpModal', '#signInMessage', '#userSignedOut', '#userSignedOut', '#get-sites'])
   reuse.showMultipleFields(['#signOut', '#changePassword', '#userNameNav', '#signedIn', '#createASite'])
   $('#messageContent').text('')
   // $('#sign-up').hide()
