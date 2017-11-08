@@ -103,11 +103,19 @@ const createSiteFailure = function (error) {
   console.error(error)
 }
 
+// const addBlogPostSuccess = function () {
+//   document.getElementById('newBlogForm').reset()
+//   $('#createABlogMessage').text('')
+//   $('#newBlog').hide()
+// }
+
 const addBlogPostSuccess = function () {
-  document.getElementById('newBlogForm').reset()
-  $('#createABlogMessage').text('')
-  // hiding the form and bringing back updated blogs page
-  $('#newBlog').hide()
+  return new Promise((resolve, reject) => {
+    document.getElementById('newBlogForm').reset()
+    $('#createABlogMessage').text('')
+    $('#newBlog').hide()
+    resolve()
+  })
 }
 
 const addBlogPostFailure = function (error) {
@@ -174,8 +182,15 @@ const manageBlog = function () {
   $('#mbDescription').text(store.site.description)
 }
 
+// const updateLocalSiteVar = function (data) {
+//   store.site = data.site
+// }
+
 const updateLocalSiteVar = function (data) {
-  store.site = data.site
+  return new Promise((resolve, reject) => {
+    store.site = data.site
+    resolve()
+  })
 }
 
 const updateLocalSitePageVar = function (data) {

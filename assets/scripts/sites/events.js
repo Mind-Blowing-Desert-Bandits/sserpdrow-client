@@ -68,12 +68,11 @@ const newBlogPost = function (event) {
   store.site.blogposts.push(newBlog)
   api.addBlogPost(store.site.blogposts)
     .then(ui.addBlogPostSuccess)
-    .catch(ui.addBlogPostFailure)
     .then(promiseGetSite)
-    .catch(ui.addBlogPostFailure)
     .then(ui.updateLocalSiteVar)
-    .catch(console.error)
     .then(manageBlog)
+    .catch(ui.addBlogPostFailure)
+    .catch(console.error)
 }
 
 const newPage = function (event) {
