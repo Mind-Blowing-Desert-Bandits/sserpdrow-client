@@ -170,11 +170,21 @@ const editPageSuccess = function () {
   $('#editPageSection').hide()
 }
 
+// const editBlogPostSuccess = function () {
+//   document.getElementById('editBlogForm').reset()
+//   // hiding the form and bringing back updated blogs page
+//   $('#editABlogMessage').text('')
+//   $('#editBlogSection').hide()
+// }
+
 const editBlogPostSuccess = function () {
-  document.getElementById('editBlogForm').reset()
-  // hiding the form and bringing back updated blogs page
-  $('#editABlogMessage').text('')
-  $('#editBlogSection').hide()
+  return new Promise((resolve, reject) => {
+    document.getElementById('editBlogForm').reset()
+    // hiding the form and bringing back updated blogs page
+    $('#editABlogMessage').text('')
+    $('#editBlogSection').hide()
+    resolve()
+  })
 }
 
 const editBlogPostFailure = function (error) {

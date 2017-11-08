@@ -202,11 +202,10 @@ const editBlogContent = function (event) {
   })
   api.addBlogPost(store.site.blogposts)
     .then(ui.editBlogPostSuccess)
-    .catch(ui.editBlogPostFailure)
     .then(promiseGetSite)
-    .catch(ui.editBlogPostFailure)
     .then(ui.updateLocalSiteVar)
     .then(manageBlog)
+    .catch(ui.editBlogPostFailure)
 }
 
 const deleteBlog = function (event) {
