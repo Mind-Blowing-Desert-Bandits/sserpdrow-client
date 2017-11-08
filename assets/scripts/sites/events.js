@@ -204,15 +204,25 @@ const closeDeleteModal = function () {
   $('#deleteModal').modal('hide')
 }
 
-const showEditPageForm = function () {
+const showEditSiteForm = function () {
   $('#editASite').show()
   $('#userDashboard').hide()
+  $('#siteTitleInput').val(store.site.title)
+  $('#siteDescriptionInput').val(store.site.description)
+  console.log($('#siteTitleInput').val())
+  console.log($('#siteDescriptionInput').val())
 }
 
-// const cancelEditPage = function () {
-//   $('#editASite').hide()
-//   $('#manageBlogSection').show()
-// }
+const cancelEditSite = function () {
+  $('#editASite').hide()
+  $('#userDashboard').show()
+  document.getElementById('editASite').reset()
+}
+
+const editSite = function (event) {
+  event.preventDefault()
+  console.log('worked')
+}
 
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
@@ -227,7 +237,9 @@ const siteHandlers = function () {
   $('#editBlogForm').on('submit', editBlogContent)
   $('.noDelete').on('click', closeDeleteModal)
   $('#yesDeleteForm').on('submit', deleteBlog)
-  $('#manageSite').on('click', showEditPageForm)
+  $('#manageSite').on('click', showEditSiteForm)
+  $('#cancelEditSiteTitleButton').on('click', cancelEditSite)
+  $('#editASite').on('submit', editSite)
 }
 
 module.exports = {
