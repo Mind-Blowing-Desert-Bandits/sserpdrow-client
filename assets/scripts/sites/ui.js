@@ -202,6 +202,10 @@ const managePages = function () {
   $('#pageDescription').text(store.site.description)
 }
 
+const deletePageSuccess = function () {
+  $('#deletePageModal').modal('hide')
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -227,5 +231,6 @@ module.exports = {
   deleteBlogPostSuccess,
   deleteBlogPostFailure,
   managePages,
-  addPageSuccess
+  addPageSuccess,
+  deletePageSuccess
 }

@@ -281,8 +281,8 @@ const managePages = function () {
   $('.deletePage').on('click', function (event) {
     const div = $(this).parents()[4]
     const dataId = $(div).attr('data-id')
-    $('#deleteBlogId').val(dataId)
-    $('#deleteModal').modal('show')
+    $('#deletePageId').val(dataId)
+    $('#deletePageModal').modal('show')
   })
   $('#managePagesSection').show()
 }
@@ -317,6 +317,21 @@ const editPageContent = function (event) {
     .then(managePages)
 }
 
+const deletePage = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data.pages.id)
+  store.site.pages = store.site.pages.filter((page) => {
+    return page.id !== data.pages.id
+  })
+  api.addPage(store.site.pages)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(managePages)
+    .then(ui.deletePageSuccess)
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -341,6 +356,7 @@ const siteHandlers = function () {
   $('#yesDeleteSite').on('click', deleteSite)
   $('#managePages').on('click', managePages)
   $('#createPageButton').on('click', showCreatePageForm)
+  $('#yesDeletePageForm').on('submit', deletePage)
 }
 
 module.exports = {
