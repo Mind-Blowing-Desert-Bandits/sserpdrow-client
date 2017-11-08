@@ -72,7 +72,6 @@ const newBlogPost = function (event) {
     .then(ui.updateLocalSiteVar)
     .then(manageBlog)
     .catch(ui.addBlogPostFailure)
-    .catch(console.error)
 }
 
 const newPage = function (event) {

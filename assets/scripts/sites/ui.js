@@ -42,8 +42,7 @@ const getUpdatedSiteFailure = function (error) {
   console.error(error)
 }
 
-const getSitesFailure = function (error) {
-  console.error(error)
+const getSitesFailure = function () {
   $('#allSites').text('Please try again')
 }
 
@@ -62,8 +61,7 @@ const viewSiteSuccess = function (site) {
   $('#sitePages').append(showPages)
 }
 
-const viewSiteFailure = function (error) {
-  console.error(error)
+const viewSiteFailure = function () {
   $('#allSites').text('Please try again')
 }
 
@@ -98,9 +96,8 @@ const createSiteSuccess = function (data) {
   $('#userDashboard').show()
 }
 
-const createSiteFailure = function (error) {
+const createSiteFailure = function () {
   $('#createASiteMessage').text('Unexpected Error. Please try again.')
-  console.error(error)
 }
 
 // const addBlogPostSuccess = function () {
@@ -118,8 +115,7 @@ const addBlogPostSuccess = function () {
   })
 }
 
-const addBlogPostFailure = function (error) {
-  console.error(error)
+const addBlogPostFailure = function () {
   $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
 
@@ -179,8 +175,7 @@ const editPageSuccess = function () {
   })
 }
 
-const editPageFailure = function (error) {
-  console.error(error)
+const editPageFailure = function () {
   $('#edit-page-message').text('Unexpected Error. Please try again.')
 }
 
@@ -201,8 +196,7 @@ const editBlogPostSuccess = function () {
   })
 }
 
-const editBlogPostFailure = function (error) {
-  console.error(error)
+const editBlogPostFailure = function () {
   $('#editABlogMessage').text('Unexpected Error. Please try again.')
 }
 
@@ -247,8 +241,7 @@ const deleteBlogPostSuccess = function () {
   $('#deleteModal').modal('hide')
   $('#deleteABlogMessage').text('')
 }
-const deleteBlogPostFailure = function (error) {
-  console.error(error)
+const deleteBlogPostFailure = function () {
   $('#deleteABlogMessage').text('Unexpected Error. Please try again.')
 }
 
@@ -260,8 +253,7 @@ const editSiteSuccess = function (data) {
   $('#userDashboard').show()
 }
 
-const editSiteFailure = function (error) {
-  console.error(error)
+const editSiteFailure = function () {
   $('#edit-site-failure').text('Unexpected Error. Please try again.')
 }
 
@@ -274,8 +266,7 @@ const deleteSiteSuccess = function () {
   $('#delete-site-failure').text('')
 }
 
-const deleteSiteFailure = function (error) {
-  console.error(error)
+const deleteSiteFailure = function () {
   $('#delete-site-failure').text('Unexpected Error. Please try again.')
 }
 
@@ -291,8 +282,7 @@ const deletePageSuccess = function () {
   $('#delete-page-failure').text('')
 }
 
-const deletePageFailure = function (error) {
-  console.error(error)
+const deletePageFailure = function () {
   $('#delete-page-failure').text('Unexpected Error. Please try again.')
 }
 
