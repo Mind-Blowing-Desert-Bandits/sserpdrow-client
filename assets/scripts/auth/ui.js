@@ -13,7 +13,7 @@ const signUpSuccess = function (data) {
 }
 
 const signUpFailure = function () {
-  $('#messageContent').text('This user may already exist. Please try again.')
+  $('#messageContent').text('Unexpected error. Please try again.')
 }
 
 const onSignInLinkClick = function (event) {
