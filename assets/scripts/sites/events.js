@@ -334,6 +334,11 @@ const returnToSite = function (event) {
   ui.viewSiteSuccess(store.site)
 }
 
+const returnToMySite = function (event) {
+  event.preventDefault()
+  ui.showMySiteSuccess(store.mySite)
+}
+
 const myDashboard = function () {
   $('#userDashboard').show()
   $('#mySite').hide()
@@ -378,6 +383,7 @@ const siteHandlers = function () {
   $('#yesDeletePageForm').on('submit', deletePage)
   $('#returnToSite').on('click', returnToSite)
   $('#dashboardLink').on('click', myDashboard)
+  $('#returnToMySite').on('click', returnToMySite)
 }
 
 module.exports = {

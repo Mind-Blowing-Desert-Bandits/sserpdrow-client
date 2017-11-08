@@ -81,6 +81,7 @@ const showMyPageSuccess = function () {
   const showPage = showPageSuccessTemplate({ page: page })
   $('#myBlogs').text('')
   $('#myBlogs').append(showPage)
+  $('#returnToMySite').show()
 }
 
 const showPageFailure = function (error) {
@@ -128,6 +129,7 @@ const showMySiteSuccess = function (data) {
   const mySite = showMySiteTemplate({ site: site })
   const myPages = showPagesTemplate({ pages: pages })
   const myBlogs = showSiteTemplate({ blogs: blogs })
+  $('#returnToMySite').hide()
   $('#userDashboard').hide()
   $('#newBlog').hide()
   $('#newPage').hide()
