@@ -51,7 +51,6 @@ const onSignUpModalLinkClink = function (event) {
 }
 
 const signInSuccess = function (data) {
-  console.log('store.site is ', store.site)
   reuse.hideMultipleFields(['#sign-up', '#signInAfterSignUp', '#sign-in',
     '#signUpLink', '#signUpModal', '#get-sites', '#mySite',
     '#myPages', '#myBlogs', '#mySiteHeader'])
@@ -108,7 +107,7 @@ const signInNewUserSuccess = function (data) {
 
 const signOutSuccess = function () {
   reuse.hideMultipleFields(['#changePassword', '#signOut', '#signUpModal',
-    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection', '#userDashboard'])
+    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection', '#userDashboard', '#createASite'])
   reuse.showMultipleFields(['#signUpLink', '#messageContent', '#signInMessage', '#signInModal',
     '#get-sites', '#userSignedOut'])
   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage', '#userNameNav',
