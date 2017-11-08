@@ -109,8 +109,8 @@ const addBlogPostFailure = function (error) {
   console.error(error)
   $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
+
 const addPageSuccess = function () {
-  console.log('ui success')
   document.getElementById('newPageForm').reset()
   // hiding the form and bringing back updated blogs page
   $('#newPage').hide()
@@ -172,6 +172,13 @@ const updateLocalSiteVar = function (data) {
   store.site = data.site
 }
 
+const updateLocalSitePageVar = function (data) {
+  const userSites = data.sites.filter((site) => {
+    return site['_owner'] === store.user['_id']
+  })
+  store.site = userSites[0]
+}
+
 const deleteBlogPostSuccess = function () {
   $('#deleteModal').modal('hide')
   $('#deleteABlogMessage').text('')
@@ -197,6 +204,7 @@ const deleteSiteSuccess = function () {
 
 const managePages = function () {
   const showMyPages = showMyPagesTemplate({ pages: store.site.pages })
+  console.log('stored pages are ', store.site.pages)
   $('#mPage').html(showMyPages)
   $('#pageTitle').text(store.site.title)
   $('#pageDescription').text(store.site.description)
@@ -232,5 +240,6 @@ module.exports = {
   deleteBlogPostFailure,
   managePages,
   addPageSuccess,
-  deletePageSuccess
+  deletePageSuccess,
+  updateLocalSitePageVar
 }

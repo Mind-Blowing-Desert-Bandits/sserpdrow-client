@@ -84,10 +84,11 @@ const newPage = function (event) {
     textcontent: data.pages.textcontent
   }
   store.site.pages.push(newPageObject)
+  console.log('stored pages are ', store.site.pages)
   api.addPage(store.site.pages)
     .then(ui.addPageSuccess)
     .then(api.getSites)
-    .then(ui.updateLocalSiteVar)
+    .then(ui.updateLocalSitePageVar)
     .catch(console.error)
     .then(managePages)
 }
@@ -313,7 +314,7 @@ const editPageContent = function (event) {
   api.addPage(store.site.pages)
     .then(ui.editPageSuccess)
     .then(api.getSites)
-    .then(ui.updateLocalSiteVar)
+    .then(ui.updateLocalSitePageVar)
     .catch(console.error)
     .then(managePages)
 }
@@ -327,7 +328,7 @@ const deletePage = function (event) {
   })
   api.addPage(store.site.pages)
     .then(api.getSites)
-    .then(ui.updateLocalSiteVar)
+    .then(ui.updateLocalSitePageVar)
     .catch(console.error)
     .then(managePages)
     .then(ui.deletePageSuccess)
