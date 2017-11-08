@@ -212,12 +212,11 @@ const deleteBlog = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   api.deleteBlogPost(data.blogposts.id)
-    .catch(ui.deleteBlogPostFailure)
     .then(promiseGetSite)
-    .catch(ui.deleteBlogPostFailure)
     .then(ui.updateLocalSiteVar)
     .then(manageBlog)
     .then(ui.deleteBlogPostSuccess)
+    .catch(ui.deleteBlogPostFailure)
 }
 
 const closeDeleteModal = function () {
