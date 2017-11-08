@@ -7,6 +7,7 @@ const showPagesTemplate = require('../templates/showPage.handlebars')
 const showPageSuccessTemplate = require('../templates/showPageSuccess.handlebars')
 const showMySiteTemplate = require('../templates/mySite.handlebars')
 const showBlogsTemplate = require('../templates/manageBlogs.handlebars')
+const showMyPagesTemplate = require('../templates/managePages.handlebars')
 
 const getSitesSuccess = function (sites) {
   store.sites = sites
@@ -181,6 +182,13 @@ const deleteSiteSuccess = function () {
   $('#createASite').show()
 }
 
+const managePages = function () {
+  const showMyPages = showMyPagesTemplate({ pages: store.site.pages })
+  $('#mPage').html(showMyPages)
+  $('#pageTitle').text(store.site.title)
+  $('#pageDescription').text(store.site.description)
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -203,5 +211,6 @@ module.exports = {
   deleteSiteSuccess,
   editBlogPostFailure,
   deleteBlogPostSuccess,
-  deleteBlogPostFailure
+  deleteBlogPostFailure,
+  managePages
 }

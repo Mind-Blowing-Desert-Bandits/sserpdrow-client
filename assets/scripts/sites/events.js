@@ -240,6 +240,35 @@ const deleteSite = function (event) {
     .catch(console.error)
 }
 
+const managePages = function () {
+  // Hide dashboard
+  $('#userDashboard').hide()
+  ui.managePages()
+  $('.editPage').on('click', function (event) {
+    const div = $(this).parents()[4]
+    const dataId = $(div).attr('data-id')
+    showEditPageForm()
+    dataIdFilter(dataId)
+  })
+  $('.deletePage').on('click', function (event) {
+    const div = $(this).parents()[4]
+    const dataId = $(div).attr('data-id')
+    $('#deleteBlogId').val(dataId)
+    $('#deleteModal').modal('show')
+  })
+  $('#managePagesSection').show()
+}
+
+const showCreatePageForm = function () {
+  $('#newPage').show()
+  $('#managePagesSection').hide()
+}
+
+const showEditPageForm = function () {
+  $('#managePagesSection').hide()
+  $('#editPageSection').show()
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -260,6 +289,8 @@ const siteHandlers = function () {
   $('#deleteSiteDropdown').on('click', showDeleteSiteModal)
   $('#noDeleteSite').on('click', closeDeleteSiteModal)
   $('#yesDeleteSite').on('click', deleteSite)
+  $('#managePages').on('click', managePages)
+  $('#createPageButton').on('click', showCreatePageForm)
 }
 
 module.exports = {

@@ -387,12 +387,58 @@
             <button type="submit" name="submit" value="Submit" id="editBlogSubmitButton" class="btn btn-primary col-md-2">Submit</button>
           </div>
 
+
           <div>
             <button type="button" name="cancel" value="cancel" id="cancelEditBlogButton" class="btn btn-secondary col-md-2">Cancel</button>
           </div>
         </form>
       </div>
     </section>
+
+        <section id="managePagesSection" style="display: none">
+          <div class="container">
+            <div class="jumbotron">
+              <h1 id="pageTitle">title</h1>
+              <p id="pageDescription">Description</p>
+            </div>
+            <div class="col-sm-12">
+              <button type="button" name="createPageButton" value="Create Page" id="createPageButton" class="btn btn-primary col-md-2">Create Page</button>
+            </div>
+            <br>
+            <h5 id="pages" style="display: none">Pages: </h5>
+            <div id="mPage">
+            </div>
+          </div>
+        </section>
+
+        <section id="editPageSection" style="display: none">
+          <div class="container">
+            <form id="editPageForm" class="form-horizontal">
+              <legend>Edit your page </legend>
+              <div class="form-group">
+                <div class="col-sm-3">
+                  <input type="text" id="editPageTitle" class="form-control" name="blogposts[title]" placeholder="Page Title" autocomplete="no" required>
+                </div>
+              </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                      <textarea class="form-control" type='text' name="blogposts[textcontent]"
+                      placeholder="Once upon a time you started this blog..." id="editPageTextArea" rows="10"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <input type="hidden" id="pageId" class="form-control" name="blogposts[id]">
+                </div>
+              <div>
+                <button type="submit" name="submit" value="Submit" id="editPageSubmitButton" class="btn btn-primary col-md-2">Submit</button>
+              </div>
+
+              <div>
+                <button type="button" name="cancel" value="cancel" id="cancelEditPageButton" class="btn btn-secondary col-md-2">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </section>
 
 
   </section>
