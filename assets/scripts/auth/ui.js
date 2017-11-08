@@ -95,6 +95,7 @@ const signInNewUserSuccess = function (data) {
 
 const signOutSuccess = function () {
   store.user = null
+  store.site = null
   $('#changePassword').hide()
   $('#signOut').hide()
   $('#signUpLink').show()
