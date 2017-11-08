@@ -72,7 +72,6 @@ const newBlogPost = function (event) {
     .then(ui.updateLocalSiteVar)
     .then(manageBlog)
     .catch(ui.addBlogPostFailure)
-    .catch(console.error)
 }
 
 const newPage = function (event) {
@@ -89,7 +88,7 @@ const newPage = function (event) {
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)
     .then(managePages)
-    .catch(console.error)
+    .catch(ui.addPageFailure)
 }
 
 const getUpdatedSiteByUser = function () {

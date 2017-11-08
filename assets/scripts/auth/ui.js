@@ -107,12 +107,11 @@ const signInNewUserSuccess = function (data) {
 
 const signOutSuccess = function () {
   reuse.hideMultipleFields(['#changePassword', '#signOut', '#signUpModal',
-    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection', '#userDashboard', '#createASite', '#returnToSite', '#dashboardLink'])
+    '#signedIn', '#editASite', '#manageBlogSection', '#newBlog', '#managePagesSection', '#newPage', '#editPageSection', '#editBlogSection', '#userDashboard', '#createASite', '#returnToSite', '#dashboardLink', '#mySite'])
   reuse.showMultipleFields(['#signUpLink', '#messageContent', '#signInMessage', '#signInModal',
     '#get-sites', '#userSignedOut'])
   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage', '#userNameNav',
     '#blogs', '#allSites', '#sitePages'])
-
   store.user = null
   store.site = null
   // $('#changePassword').hide()
@@ -136,6 +135,23 @@ const signOutSuccess = function () {
   // $('#editASite').hide()
   // $('#manageBlogSection').hide()
   // $('#newBlog').hide()
+  $('#siteTitleInput').val('')
+  $('#siteDescriptionInput').val('')
+  $('#createTitle').val('')
+  $('#createDescription').val('')
+  $('#changeOld').val('')
+  $('#changeNew').val('')
+  $('#deleteABlogMessage').val('')
+  $('#messageContent').val('')
+  $('#signInMessage').val('')
+  $('signedOut').val('')
+  $('#createASiteMessage').val('')
+  $('#createABlogMessage').val('')
+  $('#editABlogMessage').val('')
+  $('#edit-page-message').val('')
+  $('#pageTitleArea').val('')
+  $('#pageTextArea').val('')
+  $('#pageDropDown').val('About')
   document.getElementById('newBlogForm').reset()
 }
 

@@ -38,12 +38,7 @@ const getUpdatedSiteSuccess = function (data) {
   }
 }
 
-const getUpdatedSiteFailure = function (error) {
-  console.error(error)
-}
-
-const getSitesFailure = function (error) {
-  console.error(error)
+const getSitesFailure = function () {
   $('#allSites').text('Please try again')
 }
 
@@ -62,8 +57,7 @@ const viewSiteSuccess = function (site) {
   $('#sitePages').append(showPages)
 }
 
-const viewSiteFailure = function (error) {
-  console.error(error)
+const viewSiteFailure = function () {
   $('#allSites').text('Please try again')
 }
 
@@ -85,10 +79,6 @@ const showMyPageSuccess = function () {
   $('#returnToMySite').show()
 }
 
-const showPageFailure = function (error) {
-  console.error(error)
-}
-
 const createSiteSuccess = function (data) {
   store.site = data.site
   document.getElementById('create-a-site').reset()
@@ -98,9 +88,8 @@ const createSiteSuccess = function (data) {
   $('#userDashboard').show()
 }
 
-const createSiteFailure = function (error) {
+const createSiteFailure = function () {
   $('#createASiteMessage').text('Unexpected Error. Please try again.')
-  console.error(error)
 }
 
 // const addBlogPostSuccess = function () {
@@ -118,8 +107,7 @@ const addBlogPostSuccess = function () {
   })
 }
 
-const addBlogPostFailure = function (error) {
-  console.error(error)
+const addBlogPostFailure = function () {
   $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
 
@@ -134,8 +122,13 @@ const addPageSuccess = function () {
     document.getElementById('newPageForm').reset()
     // hiding the form and bringing back updated blogs page
     $('#newPage').hide()
+    $('#createAPageMessage').text('')
     resolve()
   })
+}
+
+const addPageFailure = function () {
+  $('#createAPageMessage').text('Unexpected Error. Please try again.')
 }
 
 const showMySiteSuccess = function (data) {
@@ -179,8 +172,7 @@ const editPageSuccess = function () {
   })
 }
 
-const editPageFailure = function (error) {
-  console.error(error)
+const editPageFailure = function () {
   $('#edit-page-message').text('Unexpected Error. Please try again.')
 }
 
@@ -201,8 +193,7 @@ const editBlogPostSuccess = function () {
   })
 }
 
-const editBlogPostFailure = function (error) {
-  console.error(error)
+const editBlogPostFailure = function () {
   $('#editABlogMessage').text('Unexpected Error. Please try again.')
 }
 
@@ -247,8 +238,7 @@ const deleteBlogPostSuccess = function () {
   $('#deleteModal').modal('hide')
   $('#deleteABlogMessage').text('')
 }
-const deleteBlogPostFailure = function (error) {
-  console.error(error)
+const deleteBlogPostFailure = function () {
   $('#deleteABlogMessage').text('Unexpected Error. Please try again.')
 }
 
@@ -260,8 +250,7 @@ const editSiteSuccess = function (data) {
   $('#userDashboard').show()
 }
 
-const editSiteFailure = function (error) {
-  console.error(error)
+const editSiteFailure = function () {
   $('#edit-site-failure').text('Unexpected Error. Please try again.')
 }
 
@@ -274,8 +263,7 @@ const deleteSiteSuccess = function () {
   $('#delete-site-failure').text('')
 }
 
-const deleteSiteFailure = function (error) {
-  console.error(error)
+const deleteSiteFailure = function () {
   $('#delete-site-failure').text('Unexpected Error. Please try again.')
 }
 
@@ -291,8 +279,7 @@ const deletePageSuccess = function () {
   $('#delete-page-failure').text('')
 }
 
-const deletePageFailure = function (error) {
-  console.error(error)
+const deletePageFailure = function () {
   $('#delete-page-failure').text('Unexpected Error. Please try again.')
 }
 
@@ -302,11 +289,9 @@ module.exports = {
   viewSiteSuccess,
   viewSiteFailure,
   showPageSuccess,
-  showPageFailure,
   createSiteSuccess,
   createSiteFailure,
   getUpdatedSiteSuccess,
-  getUpdatedSiteFailure,
   addBlogPostSuccess,
   addBlogPostFailure,
   showMySiteSuccess,
@@ -327,5 +312,6 @@ module.exports = {
   editSiteFailure,
   deleteSiteFailure,
   editPageFailure,
-  deletePageFailure
+  deletePageFailure,
+  addPageFailure
 }
