@@ -242,6 +242,7 @@ const deleteSite = function (event) {
   event.preventDefault()
   api.deleteSite()
     .then(ui.deleteSiteSuccess)
+    .catch(console.error)
 }
 
 const siteHandlers = function () {
