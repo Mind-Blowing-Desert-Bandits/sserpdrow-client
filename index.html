@@ -191,6 +191,30 @@
     </section>
 
 
+    <section id="editASite" style="display: none">
+      <div class="container">
+        <form id="editSiteForm" class="form-horizontal">
+          <legend>Edit your site details</legend>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Site Name:</label>
+            <div class="col-sm-5">
+              <input id="siteTitleInput" type="text" class="form-control" name="site[title]" autocomplete="no" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Site Description:</label>
+            <div class="col-sm-5">
+              <input id="siteDescriptionInput"  type="text" class="form-control" name="site[description]" autocomplete="no">
+            </div>
+          </div>
+          <div>
+            <button type="submit" name="submit" value="Submit" id="editSiteTitleButton" class="btn btn-primary col-sm-offset-4">Submit</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
     <section id="userDashboard" class="userdashboard" style="display: none">
       <div class="container">
         <div class="row">

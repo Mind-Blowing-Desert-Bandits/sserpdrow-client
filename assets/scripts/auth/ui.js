@@ -113,6 +113,7 @@ const signOutSuccess = function () {
   $('#blogs').text('')
   $('#allSites').text('')
   $('#sitePages').text('')
+  $('#editASite').hide()
 }
 
 const signOutFailure = function () {

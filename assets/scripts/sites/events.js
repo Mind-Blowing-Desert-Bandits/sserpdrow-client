@@ -204,6 +204,16 @@ const closeDeleteModal = function () {
   $('#deleteModal').modal('hide')
 }
 
+const showEditPageForm = function () {
+  $('#editASite').show()
+  $('#userDashboard').hide()
+}
+
+// const cancelEditPage = function () {
+//   $('#editASite').hide()
+//   $('#manageBlogSection').show()
+// }
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -217,6 +227,7 @@ const siteHandlers = function () {
   $('#editBlogForm').on('submit', editBlogContent)
   $('.noDelete').on('click', closeDeleteModal)
   $('#yesDeleteForm').on('submit', deleteBlog)
+  $('#manageSite').on('click', showEditPageForm)
 }
 
 module.exports = {
