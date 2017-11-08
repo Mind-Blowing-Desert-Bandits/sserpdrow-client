@@ -319,11 +319,7 @@ const editPageContent = function (event) {
 const deletePage = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data.pages.id)
-  store.site.pages = store.site.pages.filter((page) => {
-    return page.id !== data.pages.id
-  })
-  api.addPage(store.site.pages)
+  api.deletePageAPI(data.pages.id)
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)
     .catch(console.error)

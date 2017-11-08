@@ -79,6 +79,23 @@ const addPage = function (data) {
   })
 }
 
+const deletePageAPI = function (data) {
+  const updatedata = {
+    'site': {
+      'pageID': data
+    }
+  }
+  console.log('api data is', data)
+  return $.ajax({
+    url: config.apiOrigin + '/deletepage',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: updatedata
+  })
+}
+
 const getMySite = function () {
   return $.ajax({
     url: config.apiOrigin + '/sites/' + store.site.id,
@@ -119,5 +136,6 @@ module.exports = {
   editSite,
   deleteSite,
   addPage,
-  deleteBlogPost
+  deleteBlogPost,
+  deletePageAPI
 }
