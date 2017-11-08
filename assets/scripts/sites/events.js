@@ -333,6 +333,23 @@ const deletePage = function (event) {
     .then(ui.deletePageSuccess)
 }
 
+const myDashboard = function () {
+  $('#userDashboard').show()
+  $('#mySite').hide()
+  $('#manageBlogSection').hide()
+  $('#newBlog').hide()
+  document.getElementById('newBlogForm').reset()
+  $('#editBlogSection').hide()
+  document.getElementById('editBlogForm').reset()
+  $('#managePagesSection').hide()
+  $('#newPage').hide()
+  document.getElementById('newPageForm').reset()
+  $('#editPageSection').hide()
+  document.getElementById('editPageForm').reset()
+  $('#editASite').hide()
+  document.getElementById('editSiteForm').reset()
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -358,6 +375,7 @@ const siteHandlers = function () {
   $('#managePages').on('click', managePages)
   $('#createPageButton').on('click', showCreatePageForm)
   $('#yesDeletePageForm').on('submit', deletePage)
+  $('#dashboardLink').on('click', myDashboard)
 }
 
 module.exports = {
