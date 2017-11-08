@@ -153,6 +153,11 @@ const deleteBlogPostSuccess = function () {
   $('#deleteModal').modal('hide')
 }
 
+const editSiteSuccess = function (data) {
+  document.getElementById('editSiteForm').reset()
+  store.site = data.site
+}
+
 module.exports = {
   getSitesSuccess,
   getSitesFailure,
@@ -170,5 +175,6 @@ module.exports = {
   manageBlog,
   updateLocalSiteVar,
   editBlogPostSuccess,
-  deleteBlogPostSuccess
+  deleteBlogPostSuccess,
+  editSiteSuccess
 }

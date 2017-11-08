@@ -216,7 +216,7 @@ const showEditSiteForm = function () {
 const cancelEditSite = function () {
   $('#editASite').hide()
   $('#userDashboard').show()
-  document.getElementById('editASite').reset()
+  document.getElementById('editSiteForm').reset()
 }
 
 const editSite = function (event) {
@@ -224,6 +224,9 @@ const editSite = function (event) {
   const data = getFormFields(this)
   console.log(data.site.title)
   api.editSite(data)
+    .then(api.getMySite)
+    .then(ui.editSiteSuccess)
+    .catch(console.error)
     .then(console.log)
 }
 
