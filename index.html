@@ -83,6 +83,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
+            <div id="delete-site-failure"></div>
             <h3 class="modal-title">Are you sure you want to delete your site?</h3>
           </div>
           <div class="modal-footer">
@@ -104,6 +105,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
+            <div id="delete-page-failure"></div>
             <h3 class="modal-title">Are you sure you want to delete this page?</h3>
           </div>
           <div class="modal-footer">
@@ -241,6 +243,7 @@
       <div class="container">
         <form id="editSiteForm" class="form-horizontal">
           <legend>Edit your site details</legend>
+          <div id="edit-site-failure"></div>
         <div class="col-sm-12">
           <div class="form-group">
             <label class="control-label col-sm-2" for="pwd">Site Name:</label>
@@ -451,6 +454,7 @@
             <form id="editPageForm" class="form-horizontal">
 
               <legend>Edit your page </legend>
+              <div id="edit-page-message"></div>
               <div class="form-group">
                 <label for="sel1">Type of page</label>
                 <select class="form-control" name="pages[type]" id="editPageDropDown">

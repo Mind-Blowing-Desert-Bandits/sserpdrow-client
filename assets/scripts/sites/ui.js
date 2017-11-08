@@ -37,6 +37,7 @@ const getUpdatedSiteSuccess = function (data) {
     $('#createASite').show()
   }
 }
+
 const getUpdatedSiteFailure = function (error) {
   console.error(error)
 }
@@ -174,8 +175,14 @@ const editPageSuccess = function () {
     document.getElementById('editPageForm').reset()
     // hiding the form and bringing back updated blogs page
     $('#editPageSection').hide()
+    $('#edit-page-message').text('')
     resolve()
   })
+}
+
+const editPageFailure = function (error) {
+  console.error(error)
+  $('#edit-page-message').text('Unexpected Error. Please try again.')
 }
 
 // const editBlogPostSuccess = function () {
@@ -249,8 +256,14 @@ const deleteBlogPostFailure = function (error) {
 const editSiteSuccess = function (data) {
   document.getElementById('editSiteForm').reset()
   store.site = data.site
+  $('#edit-site-failure').text('')
   $('#editASite').hide()
   $('#userDashboard').show()
+}
+
+const editSiteFailure = function (error) {
+  console.error(error)
+  $('#edit-site-failure').text('Unexpected Error. Please try again.')
 }
 
 const deleteSiteSuccess = function () {
@@ -259,6 +272,12 @@ const deleteSiteSuccess = function () {
   $('#userDashboard').hide()
   $('#dashboardLink').hide()
   $('#createASite').show()
+  $('#delete-site-failure').text('')
+}
+
+const deleteSiteFailure = function (error) {
+  console.error(error)
+  $('#delete-site-failure').text('Unexpected Error. Please try again.')
 }
 
 const managePages = function () {
@@ -271,6 +290,12 @@ const managePages = function () {
 
 const deletePageSuccess = function () {
   $('#deletePageModal').modal('hide')
+  $('#delete-page-failure').text('')
+}
+
+const deletePageFailure = function (error) {
+  console.error(error)
+  $('#delete-page-failure').text('Unexpected Error. Please try again.')
 }
 
 module.exports = {
@@ -300,5 +325,9 @@ module.exports = {
   managePages,
   addPageSuccess,
   deletePageSuccess,
-  updateLocalSitePageVar
+  updateLocalSitePageVar,
+  editSiteFailure,
+  deleteSiteFailure,
+  editPageFailure,
+  deletePageFailure
 }

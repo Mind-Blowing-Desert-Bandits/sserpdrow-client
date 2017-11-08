@@ -243,7 +243,7 @@ const editSite = function (event) {
   api.editSite(data)
     .then(api.getMySite)
     .then(ui.editSiteSuccess)
-    .catch(console.error)
+    .catch(ui.editSiteFailure)
 }
 
 const showDeleteSiteModal = function () {
@@ -258,7 +258,7 @@ const deleteSite = function (event) {
   event.preventDefault()
   api.deleteSite()
     .then(ui.deleteSiteSuccess)
-    .catch(console.error)
+    .catch(ui.deleteSiteFailure)
 }
 
 const managePages = function () {
@@ -305,7 +305,7 @@ const editPageContent = function (event) {
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)
     .then(managePages)
-    .catch(console.error)
+    .catch(ui.editPageFailure)
 }
 
 const deletePage = function (event) {
@@ -316,7 +316,7 @@ const deletePage = function (event) {
     .then(ui.updateLocalSitePageVar)
     .then(managePages)
     .then(ui.deletePageSuccess)
-    .catch(console.error)
+    .catch(ui.deletePageFailure)
 }
 
 const returnToSite = function (event) {
