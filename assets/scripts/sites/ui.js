@@ -23,7 +23,6 @@ const getUpdatedSiteSuccess = function (data) {
     return site['_owner'] === store.user['_id']
   })
   store.site = userSites[0]
-  console.log('store.site is', store.site)
   if (userSites.length !== 0) {
     // Show the dashboard
     $('#userSignedOut').hide()
@@ -36,10 +35,12 @@ const getUpdatedSiteSuccess = function (data) {
     $('#createASite').show()
   }
 }
-const getUpdatedSiteFailure = function (data) {
+const getUpdatedSiteFailure = function (error) {
+  console.error(error)
 }
 
-const getSitesFailure = function () {
+const getSitesFailure = function (error) {
+  console.error(error)
   $('#allSites').text('Please try again')
 }
 
@@ -57,7 +58,8 @@ const viewSiteSuccess = function (site) {
   $('#sitePages').append(showPages)
 }
 
-const viewSiteFailure = function () {
+const viewSiteFailure = function (error) {
+  console.error(error)
   $('#allSites').text('Please try again')
 }
 
@@ -77,26 +79,34 @@ const showMyPageSuccess = function () {
   $('#myBlogs').append(showPage)
 }
 
-const showPageFailure = function () {
-  console.log('it failed')
+const showPageFailure = function (error) {
+  console.error(error)
 }
 
 const createSiteSuccess = function (data) {
   store.site = data.site
   console.log(store.site)
+  document.getElementById('create-a-site').reset()
+  $('#createASiteMessage').text('')
   $('#createASite').hide()
   $('#userDashboard').show()
 }
 
-const createSiteFailure = function () {
-  console.log('failure')
+const createSiteFailure = function (error) {
+  $('#createASiteMessage').text('Unexpected Error. Please try again.')
+  console.error(error)
 }
 
 const addBlogPostSuccess = function () {
-  console.log('ui success')
   document.getElementById('newBlogForm').reset()
+  $('#createABlogMessage').text('')
   // hiding the form and bringing back updated blogs page
   $('#newBlog').hide()
+}
+
+const addBlogPostFailure = function (error) {
+  console.error(error)
+  $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
 
 const showMySiteSuccess = function (data) {
@@ -107,7 +117,6 @@ const showMySiteSuccess = function (data) {
   const mySite = showMySiteTemplate({ site: site })
   const myPages = showPagesTemplate({ pages: pages })
   const myBlogs = showSiteTemplate({ blogs: blogs })
-  console.log('site is ', site.site.blogposts)
   $('#userDashboard').hide()
   $('#newBlog').hide()
   $('#newPage').hide()
@@ -125,10 +134,15 @@ const showMySiteSuccess = function (data) {
 }
 
 const editBlogPostSuccess = function () {
-  console.log('ui success')
   document.getElementById('editBlogForm').reset()
   // hiding the form and bringing back updated blogs page
+  $('#editABlogMessage').text('')
   $('#editBlogSection').hide()
+}
+
+const editBlogPostFailure = function (error) {
+  console.error(error)
+  $('#editABlogMessage').text('Unexpected Error. Please try again.')
 }
 
 const manageBlog = function () {
@@ -138,19 +152,33 @@ const manageBlog = function () {
   $('#mBlog').html(showBlogs)
   $('#mbTitle').text(store.site.title)
   $('#mbDescription').text(store.site.description)
-  console.log(store.site)
-  console.log(store.site.blogposts)
 }
 
 const updateLocalSiteVar = function (data) {
-  const userSites = data.sites.filter((site) => {
-    return site['_owner'] === store.user['_id']
-  })
-  store.site = userSites[0]
+  store.site = data.site
 }
 
 const deleteBlogPostSuccess = function () {
   $('#deleteModal').modal('hide')
+  $('#deleteABlogMessage').text('')
+}
+const deleteBlogPostFailure = function (error) {
+  console.error(error)
+  $('#deleteABlogMessage').text('Unexpected Error. Please try again.')
+}
+
+const editSiteSuccess = function (data) {
+  document.getElementById('editSiteForm').reset()
+  store.site = data.site
+  $('#editASite').hide()
+  $('#userDashboard').show()
+}
+
+const deleteSiteSuccess = function () {
+  store.site = null
+  $('#deleteSiteModal').modal('hide')
+  $('#userDashboard').hide()
+  $('#createASite').show()
 }
 
 module.exports = {
@@ -165,10 +193,15 @@ module.exports = {
   getUpdatedSiteSuccess,
   getUpdatedSiteFailure,
   addBlogPostSuccess,
+  addBlogPostFailure,
   showMySiteSuccess,
   showMyPageSuccess,
   manageBlog,
   updateLocalSiteVar,
   editBlogPostSuccess,
-  deleteBlogPostSuccess
+  editSiteSuccess,
+  deleteSiteSuccess,
+  editBlogPostFailure,
+  deleteBlogPostSuccess,
+  deleteBlogPostFailure
 }
