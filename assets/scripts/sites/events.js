@@ -225,6 +225,7 @@ const deleteBlog = function (event) {
 
 const closeDeleteModal = function () {
   $('#deleteModal').modal('hide')
+  $('#deletePageModal').modal('hide')
 }
 
 const showEditSiteForm = function () {
