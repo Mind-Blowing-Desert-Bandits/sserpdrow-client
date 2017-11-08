@@ -88,7 +88,7 @@ const newPage = function (event) {
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)
     .then(managePages)
-    .catch(console.error)
+    .catch(ui.addPageFailure)
 }
 
 const getUpdatedSiteByUser = function () {

@@ -130,8 +130,13 @@ const addPageSuccess = function () {
     document.getElementById('newPageForm').reset()
     // hiding the form and bringing back updated blogs page
     $('#newPage').hide()
+    $('#createAPageMessage').text('')
     resolve()
   })
+}
+
+const addPageFailure = function () {
+  $('#createAPageMessage').text('Unexpected Error. Please try again.')
 }
 
 const showMySiteSuccess = function (data) {
@@ -317,5 +322,6 @@ module.exports = {
   editSiteFailure,
   deleteSiteFailure,
   editPageFailure,
-  deletePageFailure
+  deletePageFailure,
+  addPageFailure
 }
