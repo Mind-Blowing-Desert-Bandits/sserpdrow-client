@@ -150,6 +150,21 @@ const dataIdFilter = function (dataId) {
   $('#blogId').val(blogpost.id)
 }
 
+const dataPageIdFilter = function (dataId) {
+  const page = store.site.pages.filter((page) => {
+    return page.id === dataId
+  })[0]
+  // console.log('this is page ', page)
+  // console.log(page.textcontent)
+  // console.log(page.title)
+  console.log(page.type)
+  $('#pageDropDown').val(page.type)
+  $('#editPageTitle').val(page.title)
+  $('#editPageTextArea').val(page.textcontent)
+  $('#pageId').val(page.id)
+  console.log('this is the stuff ', $('#pageId').val())
+}
+
 const showCreateBlogForm = function () {
   $('#newBlog').show()
   $('#manageBlogSection').hide()
@@ -165,6 +180,12 @@ const cancelEditBlog = function () {
   $('#editBlogSection').hide()
   $('#manageBlogSection').show()
   document.getElementById('editBlogForm').reset()
+}
+
+const cancelEditPage = function () {
+  $('#editPageSection').hide()
+  $('#managePagesSection').show()
+  document.getElementById('editPageForm').reset()
 }
 
 const showEditBlogForm = function () {
@@ -258,7 +279,7 @@ const managePages = function () {
     const div = $(this).parents()[4]
     const dataId = $(div).attr('data-id')
     showEditPageForm()
-    dataIdFilter(dataId)
+    dataPageIdFilter(dataId)
   })
   $('.deletePage').on('click', function (event) {
     const div = $(this).parents()[4]
@@ -279,6 +300,26 @@ const showEditPageForm = function () {
   $('#editPageSection').show()
 }
 
+const editPageContent = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  store.site.pages.forEach((page, index) => {
+    console.log('pages.type', page.type)
+    if (page.id === data.pages.id) {
+      store.site.pages[index].type = data.pages.type
+      store.site.pages[index].title = data.pages.title
+      store.site.pages[index].textcontent = data.pages.textcontent
+    }
+  })
+  console.log('this is store.site.pages ', store.site.pages)
+  api.addPage(store.site.pages)
+    .then(ui.editPageSuccess)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(managePages)
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -289,7 +330,9 @@ const siteHandlers = function () {
   $('#createBlogButton').on('click', showCreateBlogForm)
   $('#cancelNewBlogButton').on('click', cancelNewBlog)
   $('#cancelEditBlogButton').on('click', cancelEditBlog)
+  $('#cancelEditPageButton').on('click', cancelEditPage)
   $('#editBlogForm').on('submit', editBlogContent)
+  $('#editPageForm').on('submit', editPageContent)
   $('.noDelete').on('click', closeDeleteModal)
   $('#yesDeleteForm').on('submit', deleteBlog)
   $('#manageSite').on('click', showEditSiteForm)

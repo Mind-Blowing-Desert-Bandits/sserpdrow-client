@@ -140,6 +140,13 @@ const showMySiteSuccess = function (data) {
   $('#myBlogs').append(myBlogs)
 }
 
+const editPageSuccess = function () {
+  console.log('ui success')
+  document.getElementById('editPageForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#editPageSection').hide()
+}
+
 const editBlogPostSuccess = function () {
   document.getElementById('editBlogForm').reset()
   // hiding the form and bringing back updated blogs page
@@ -216,6 +223,7 @@ module.exports = {
   editSiteSuccess,
   deleteSiteSuccess,
   editBlogPostFailure,
+  editPageSuccess,
   deleteBlogPostSuccess,
   deleteBlogPostFailure,
   managePages,

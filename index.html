@@ -414,20 +414,30 @@
         <section id="editPageSection" style="display: none">
           <div class="container">
             <form id="editPageForm" class="form-horizontal">
+
               <legend>Edit your page </legend>
               <div class="form-group">
+                <label for="sel1">Type of page</label>
+                <select class="form-control" name="pages[type]" id="pageDropDown">
+                  <option name="pages[type]">About</option>
+                  <option name="pages[type]">Hours</option>
+                  <option name="pages[type]">Contact</option>
+                </select>
+
+                <br>
+
                 <div class="col-sm-3">
-                  <input type="text" id="editPageTitle" class="form-control" name="blogposts[title]" placeholder="Page Title" autocomplete="no" required>
+                  <input type="text" id="editPageTitle" class="form-control" name="pages[title]" placeholder="Page Title" autocomplete="no" required>
                 </div>
               </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                      <textarea class="form-control" type='text' name="blogposts[textcontent]"
+                      <textarea class="form-control" type='text' name="pages[textcontent]"
                       placeholder="Once upon a time you started this blog..." id="editPageTextArea" rows="10"></textarea>
                     </div>
                 </div>
                 <div>
-                    <input type="hidden" id="pageId" class="form-control" name="blogposts[id]">
+                    <input type="hidden" id="pageId" class="form-control" name="pages[id]">
                 </div>
               <div>
                 <button type="submit" name="submit" value="Submit" id="editPageSubmitButton" class="btn btn-primary col-md-2">Submit</button>
