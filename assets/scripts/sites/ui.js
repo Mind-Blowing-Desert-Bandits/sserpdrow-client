@@ -49,6 +49,7 @@ const viewSiteSuccess = function (site) {
   store.site = site
   const showSite = showSiteTemplate({ blogs: site.site.blogposts })
   const showPages = showPagesTemplate({ pages: site.site.pages })
+  $('#returnToSite').hide()
   $('#allSites').text('')
   $('#siteTitle').text(site.site.title)
   $('#siteDescription').text('')
@@ -66,6 +67,7 @@ const viewSiteFailure = function (error) {
 
 const showPageSuccess = function () {
   $('#blogs').hide()
+  $('#returnToSite').show()
   const page = store.page
   const showPage = showPageSuccessTemplate({ page: page })
   $('#allSites').text('')

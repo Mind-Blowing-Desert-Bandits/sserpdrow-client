@@ -334,6 +334,11 @@ const deletePage = function (event) {
     .then(ui.deletePageSuccess)
 }
 
+const returnToSite = function (event) {
+  event.preventDefault()
+  ui.viewSiteSuccess(store.site)
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -359,6 +364,7 @@ const siteHandlers = function () {
   $('#managePages').on('click', managePages)
   $('#createPageButton').on('click', showCreatePageForm)
   $('#yesDeletePageForm').on('submit', deletePage)
+  $('#returnToSite').on('click', returnToSite)
 }
 
 module.exports = {
