@@ -230,6 +230,14 @@ const editSite = function (event) {
     .then(console.log)
 }
 
+const showDeleteSiteModal = function () {
+  $('#deleteSiteModal').modal('show')
+}
+
+const closeDeleteSiteModal = function () {
+  $('#deleteSiteModal').modal('hide')
+}
+
 const siteHandlers = function () {
   $('#get-sites').on('click', onGetSites)
   $('#create-a-site').on('submit', createSite)
@@ -246,6 +254,9 @@ const siteHandlers = function () {
   $('#manageSite').on('click', showEditSiteForm)
   $('#cancelEditSiteTitleButton').on('click', cancelEditSite)
   $('#editSiteForm').on('submit', editSite)
+  $('#editSiteDropdown').on('click', showEditSiteForm)
+  $('#deleteSiteDropdown').on('click', showDeleteSiteModal)
+  $('#noDeleteSite').on('click', closeDeleteSiteModal)
 }
 
 module.exports = {
