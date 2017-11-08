@@ -38,10 +38,6 @@ const getUpdatedSiteSuccess = function (data) {
   }
 }
 
-const getUpdatedSiteFailure = function (error) {
-  console.error(error)
-}
-
 const getSitesFailure = function () {
   $('#allSites').text('Please try again')
 }
@@ -81,10 +77,6 @@ const showMyPageSuccess = function () {
   $('#myBlogs').text('')
   $('#myBlogs').append(showPage)
   $('#returnToMySite').show()
-}
-
-const showPageFailure = function (error) {
-  console.error(error)
 }
 
 const createSiteSuccess = function (data) {
@@ -297,11 +289,9 @@ module.exports = {
   viewSiteSuccess,
   viewSiteFailure,
   showPageSuccess,
-  showPageFailure,
   createSiteSuccess,
   createSiteFailure,
   getUpdatedSiteSuccess,
-  getUpdatedSiteFailure,
   addBlogPostSuccess,
   addBlogPostFailure,
   showMySiteSuccess,
