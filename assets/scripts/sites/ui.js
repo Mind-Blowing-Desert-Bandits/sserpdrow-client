@@ -109,6 +109,12 @@ const addBlogPostFailure = function (error) {
   console.error(error)
   $('#createABlogMessage').text('Unexpected Error. Please try again.')
 }
+const addPageSuccess = function () {
+  console.log('ui success')
+  document.getElementById('newPageForm').reset()
+  // hiding the form and bringing back updated blogs page
+  $('#newPage').hide()
+}
 
 const showMySiteSuccess = function (data) {
   store.mySite = data
@@ -212,5 +218,6 @@ module.exports = {
   editBlogPostFailure,
   deleteBlogPostSuccess,
   deleteBlogPostFailure,
-  managePages
+  managePages,
+  addPageSuccess
 }

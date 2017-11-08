@@ -86,6 +86,10 @@ const newPage = function (event) {
   store.site.pages.push(newPageObject)
   api.addPage(store.site.pages)
     .then(ui.addPageSuccess)
+    .then(api.getSites)
+    .then(ui.updateLocalSiteVar)
+    .catch(console.error)
+    .then(managePages)
 }
 
 const getUpdatedSiteByUser = function () {
