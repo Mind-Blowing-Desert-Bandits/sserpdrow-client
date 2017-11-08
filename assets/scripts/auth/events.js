@@ -5,6 +5,7 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 const apiSites = require('../sites/api')
+const reuse = require('../reuse/reuse.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -13,9 +14,10 @@ const onSignUp = function (event) {
   if (data.credentials.password !== data.credentials.password_confirmation) {
     $('#messageContent').text('Password and password confirmation do not match.')
   } else {
-    $('#signUpEmail').val('')
-    $('#signUpPassword').val('')
-    $('#signUpPasswordConf').val('')
+    reuse.removeValMultipleTextFields(['#signUpEmail', '#signUpPassword', '#signUpPasswordConf'])
+    // $('#signUpEmail').val('')
+    // $('#signUpPassword').val('')
+    // $('#signUpPasswordConf').val('')
     api.signUp(data)
       .then(ui.signUpSuccess)
       .catch(ui.signUpFailure)
@@ -29,8 +31,9 @@ const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   $('#passwordChange').text('')
-  $('#signInEmail').val('')
-  $('#signInPassword').val('')
+  reuse.removeValMultipleTextFields(['#signInEmail', '#signInPassword'])
+  // $('#signInEmail').val('')
+  // $('#signInPassword').val('')
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -38,12 +41,15 @@ const onSignIn = function (event) {
 
 const onSignUpLinkClick = function (event) {
   event.preventDefault()
-  $('#sign-up').hide()
-  $('#sign-in').show()
-  $('#signInModal').hide()
-  $('#signUpModal').show()
-  $('#messageContent').text('')
-  $('#signInMessage').text('')
+  reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage'])
+  reuse.hideMultipleFields(['#sign-up', '#signInModal'])
+  reuse.showMultipleFields(['#sign-in', '#signUpModal'])
+  // $('#sign-up').hide()
+  // $('#sign-in').show()
+  // $('#signInModal').hide()
+  // $('#signUpModal').show()
+  // $('#messageContent').text('')
+  // $('#signInMessage').text('')
 }
 
 const onSignOut = function (event) {
@@ -56,8 +62,9 @@ const onSignOut = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  $('#changeOld').val('')
-  $('#changeNew').val('')
+  reuse.removeValMultipleTextFields(['#changeOld', '#changeNew'])
+  // $('#changeOld').val('')
+  // $('#changeNew').val('')
   if (store.user === undefined || null) {
     $('#passwordChange').text('You must sign in before you can change your password.')
   } else if (data.passwords.old.length === 0) {

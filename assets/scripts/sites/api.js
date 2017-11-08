@@ -11,6 +11,7 @@ const getSites = function () {
 }
 
 const getSite = function (thisID) {
+  console.log('thisID', thisID)
   return $.ajax({
     url: config.apiOrigin + '/sites/' + thisID
   })
@@ -47,8 +48,29 @@ const addBlogPost = function (data) {
 
 const getMySite = function () {
   return $.ajax({
-    url: config.apiOrigin + '/sites' + '/5a00b686fabc1901c06cda29',
+    url: config.apiOrigin + '/sites/' + store.site.id,
     method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const editSite = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const deleteSite = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + store.site.id,
+    method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -60,5 +82,7 @@ module.exports = {
   getSite,
   createSite,
   addBlogPost,
-  getMySite
+  getMySite,
+  editSite,
+  deleteSite
 }
