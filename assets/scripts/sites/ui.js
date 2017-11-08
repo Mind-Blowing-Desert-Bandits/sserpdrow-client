@@ -29,6 +29,7 @@ const getUpdatedSiteSuccess = function (data) {
     $('#userSignedOut').hide()
     $('#signedIn').show()
     $('#userDashboard').show()
+    $('#dashboardLink').show()
   } else {
     // Have them create a site
     $('#userSignedOut').hide()

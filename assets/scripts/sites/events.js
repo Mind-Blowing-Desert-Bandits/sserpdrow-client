@@ -320,6 +320,7 @@ const editPageContent = function (event) {
 const deletePage = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
+  console.log('data is ', data)
   api.deletePageAPI(data.pages.id)
     .then(api.getSites)
     .then(ui.updateLocalSitePageVar)

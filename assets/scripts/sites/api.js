@@ -85,7 +85,7 @@ const deletePageAPI = function (data) {
       'pageID': data
     }
   }
-  console.log('api data is', data)
+  console.log('api data is', updatedata)
   return $.ajax({
     url: config.apiOrigin + '/deletepage',
     method: 'PATCH',
